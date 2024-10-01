@@ -31,10 +31,11 @@ class MyApp extends StatelessWidget {
       height: context.screenHeight,
       width: context.screenWidth,
       child: MaterialApp(
-        title: 'Chat APP',
+        title: 'Whats App lite',
         navigatorKey: navigatorKey,
         debugShowCheckedModeBanner: false,
         theme: AppThemes.light,
+        initialRoute: AppRoutes.splash,
         routes: {
           AppRoutes.start: (context) => const LoginScreen(),
           AppRoutes.splash: (context) => const SplashScreen(),
@@ -44,7 +45,6 @@ class MyApp extends StatelessWidget {
           AppRoutes.register: (context) => const RegisterScreen(),
           AppRoutes.home: (context) => const HomeScreen(),
         },
-        // home: const SizedBox(),
       ),
     );
   }

@@ -9,10 +9,10 @@ import 'package:flutter/material.dart';
 
 abstract class AppThemes {
   static final light = ThemeData(
-    // fontFamily: LocaleCacheHelper.langCode == 'en' ? "Poppins" : "Cairo",
+    fontFamily: "Inter",
     useMaterial3: false,
     primaryColor: AppColors.primary,
-    scaffoldBackgroundColor: Colors.white,
+    scaffoldBackgroundColor: AppColors.scaffoldBackgroundColor,
     colorScheme: ColorScheme.fromSwatch().copyWith(
       primary: AppColors.primary,
     ),

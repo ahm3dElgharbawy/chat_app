@@ -21,11 +21,20 @@ class AppSizes {
   static const double iconMd = 24.0;
   static const double iconLg = 32.0;
 
-  static SizedBox get smHeight => SizedBox(height: 16.h);
-  static SizedBox get mdHeight => SizedBox(height: 20.h);
-  static SizedBox get lgHeight => SizedBox(height: 32.h);
-  static SizedBox get xsWidth => const SizedBox(width: xs);
-  static SizedBox get smWidth => SizedBox(width: 16.h);
-  static SizedBox get mdWidth => SizedBox(width: 20.h);
-  static SizedBox get lgWidth => SizedBox(width: 32.h);
+  // height
+  static final h5 = SizedBox(height: 5.h);
+  static final h10 = SizedBox(height: 10.h);
+  static final h15 = SizedBox(height: 15.h);
+  static final h20 = SizedBox(height: 20.h);
+  static final h25 = SizedBox(height: 25.h);
+  static final h30 = SizedBox(height: 30.h);
+  // width
+  static final w4 = SizedBox(width: 4.w);
+  static final w5 = SizedBox(width: 5.w);
+  static final w6 = SizedBox(width: 6.w);
+  static final w10 = SizedBox(width: 10.w);
+  static final w15 = SizedBox(width: 15.w);
+  static final w20 = SizedBox(width: 20.w);
+  static final w25 = SizedBox(width: 25.w);
+  static final w30 = SizedBox(width: 30.w);
 }

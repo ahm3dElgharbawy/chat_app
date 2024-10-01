@@ -3,7 +3,6 @@ import 'package:chat_app/core/helpers/validator.dart';
 import 'package:chat_app/core/themes/styles.dart';
 import 'package:flutter/material.dart';
 
-
 class CustomTextField extends StatelessWidget with Validator {
   const CustomTextField(
       {super.key,
@@ -51,13 +50,15 @@ class CustomTextField extends StatelessWidget with Validator {
         // FocusScope.of(context).unfocus();
       },
       style: const TextStyle(fontSize: 16),
-
       decoration: InputDecoration(
         hintText: hint,
         prefixIcon: prefix,
         suffixIcon: suffix,
         fillColor: fillColor,
-        floatingLabelBehavior: FloatingLabelBehavior.always,
+        label: Container(
+          margin: const EdgeInsets.symmetric(horizontal: 20),
+          child: Text("$label"),
+        ),
         border: border,
         hintStyle: TextStyles.medium14.copyWith(color: Colors.grey),
         enabledBorder: border,

@@ -4,23 +4,24 @@ import 'package:flutter/material.dart';
 abstract class CustomInputDecorationTheme {
   static InputDecorationTheme lightInputDecorationTheme = InputDecorationTheme(
     filled: true,
-    fillColor: AppColors.light,
+    // fillColor: AppColors.light,
     border: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(10),
-      borderSide: BorderSide(color: Colors.grey[300]!),
+      borderRadius: BorderRadius.circular(30),
+      borderSide: const BorderSide(color: Colors.grey,width: 1),
     ),
     enabledBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(10),
-      borderSide: BorderSide(color: Colors.grey[300]!),
+      borderRadius: BorderRadius.circular(30),
+      borderSide: const BorderSide(color: Colors.grey,width: 1),
     ),
     focusedBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(10),
-      borderSide: const BorderSide(color: AppColors.primary),
+      borderRadius: BorderRadius.circular(30),
+      borderSide: const BorderSide(color: AppColors.primary,width: 1),
     ),
     errorBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(10),
+      borderRadius: BorderRadius.circular(30),
       borderSide: const BorderSide(
-        color: AppColors.red
+        color: AppColors.red,
+        width: 1
       )
     )
   );
