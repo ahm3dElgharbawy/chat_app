@@ -1,9 +1,11 @@
 import 'package:chat_app/core/constants/sizes.dart';
 import 'package:chat_app/core/enums/media_type.dart';
+import 'package:chat_app/core/themes/styles.dart';
 import 'package:flutter/material.dart';
 
 class CustomMessageTypeWithIcon extends StatelessWidget {
-  const CustomMessageTypeWithIcon({super.key, required this.mediaType, this.text});
+  const CustomMessageTypeWithIcon(
+      {super.key, required this.mediaType, this.text});
   final MediaType mediaType;
   final String? text;
 
@@ -20,7 +22,7 @@ class CustomMessageTypeWithIcon extends StatelessWidget {
               color: Colors.grey[700],
             ),
             AppSizes.w6,
-            const Text("Video")
+            Text("Video", style: TextStyles.regular14)
           ],
         );
       case MediaType.audio:
@@ -32,7 +34,7 @@ class CustomMessageTypeWithIcon extends StatelessWidget {
               color: Colors.grey[700],
             ),
             AppSizes.w6,
-            const Text("Audio")
+            Text("Audio", style: TextStyles.regular14)
           ],
         );
       case MediaType.sticker:
@@ -44,7 +46,7 @@ class CustomMessageTypeWithIcon extends StatelessWidget {
               color: Colors.grey[700],
             ),
             AppSizes.w6,
-            const Text("Sticker")
+            Text("Sticker", style: TextStyles.regular14)
           ],
         );
       case MediaType.photo:
@@ -56,11 +58,11 @@ class CustomMessageTypeWithIcon extends StatelessWidget {
               color: Colors.grey[700],
             ),
             AppSizes.w6,
-            const Text("Photo")
+            Text("Photo", style: TextStyles.regular14)
           ],
         );
       default:
-        return Text(text.toString());
+        return Text(text.toString(), style: TextStyles.regular14);
     }
   }
 }

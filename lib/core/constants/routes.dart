@@ -1,6 +1,6 @@
 class AppRoutes {
   AppRoutes._internal();
-  static const String start = '/';
+  static const String initial = '/';
   // intro feature
   static const String splash = '/splash';
   static const String onboarding = '/onboarding';

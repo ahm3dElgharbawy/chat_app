@@ -1,4 +1,4 @@
-import 'package:chat_app/core/components/circular_container.dart';
+import 'package:chat_app/core/common_widgets/circular_container.dart';
 import 'package:chat_app/core/constants/sizes.dart';
 import 'package:chat_app/core/themes/colors.dart';
 import 'package:chat_app/core/themes/styles.dart';

@@ -1,7 +1,7 @@
-import 'package:chat_app/core/components/circular_image.dart';
-import 'package:chat_app/core/components/delivery_seen_status.dart';
-import 'package:chat_app/core/components/message_type_with_icon.dart';
-import 'package:chat_app/core/components/read_unread_time.dart';
+import 'package:chat_app/core/common_widgets/circular_image.dart';
+import 'package:chat_app/core/common_widgets/delivery_seen_status.dart';
+import 'package:chat_app/core/common_widgets/message_type_with_icon.dart';
+import 'package:chat_app/core/common_widgets/read_unread_time.dart';
 import 'package:chat_app/core/constants/sizes.dart';
 import 'package:chat_app/core/enums/media_type.dart';
 import 'package:chat_app/core/enums/seen_status.dart';

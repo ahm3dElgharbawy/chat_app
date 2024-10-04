@@ -65,8 +65,8 @@ class CustomTextField extends StatelessWidget with Validator {
         focusedBorder: border,
         contentPadding: contentPadding ??
             const EdgeInsets.symmetric(
-              horizontal: AppSizes.md,
-              vertical: AppSizes.md,
+              horizontal: 16,
+              vertical: 16,
             ),
       ),
       validator: (value) {
