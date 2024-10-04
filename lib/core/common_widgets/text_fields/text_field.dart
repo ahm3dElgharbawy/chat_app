@@ -1,4 +1,3 @@
-import 'package:chat_app/core/constants/sizes.dart';
 import 'package:chat_app/core/helpers/validator.dart';
 import 'package:chat_app/core/themes/styles.dart';
 import 'package:flutter/material.dart';

@@ -1,6 +1,5 @@
 import 'package:chat_app/core/common_widgets/message_type_with_icon.dart';
 import 'package:chat_app/core/constants/icon_strings.dart';
-import 'package:chat_app/core/constants/image_strings.dart';
 import 'package:chat_app/core/constants/sizes.dart';
 import 'package:chat_app/core/enums/media_type.dart';
 import 'package:chat_app/core/enums/seen_status.dart';
