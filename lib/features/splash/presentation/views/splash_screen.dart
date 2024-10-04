@@ -1,10 +1,7 @@
-import 'package:chat_app/core/constants/icon_strings.dart';
 import 'package:chat_app/core/constants/image_strings.dart';
 import 'package:chat_app/core/constants/routes.dart';
 import 'package:chat_app/core/extensions/navigation.dart';
-import 'package:chat_app/core/extensions/size_extensions.dart';
 import 'package:chat_app/core/themes/styles.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -34,13 +31,13 @@ class _SplashScreenState extends State<SplashScreen> {
       body: Stack(
         alignment: Alignment.center,
         children: [
-          FadeInImage(
-            height: 100.h,
-            placeholder: const AssetImage(
+          const FadeInImage(
+            height: 200,
+            placeholder: AssetImage(
               ImageStrings.empty,
             ),
-            image: const AssetImage(
-              IconStrings.whatsapp,
+            image: AssetImage(
+              ImageStrings.logo,
             ),
           ),
           Align(
@@ -48,7 +45,7 @@ class _SplashScreenState extends State<SplashScreen> {
             child: Padding(
               padding: const EdgeInsets.only(bottom: 100),
               child: Text(
-                "Made with 💙 by Ahm3d",
+                "The best chat app of this century",
                 style: TextStyles.regular16,
               ),
             ),
