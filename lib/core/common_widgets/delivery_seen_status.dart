@@ -1,4 +1,4 @@
-import 'package:chat_app/core/components/message_type_with_icon.dart';
+import 'package:chat_app/core/common_widgets/message_type_with_icon.dart';
 import 'package:chat_app/core/constants/icon_strings.dart';
 import 'package:chat_app/core/constants/image_strings.dart';
 import 'package:chat_app/core/constants/sizes.dart';
@@ -41,7 +41,7 @@ class CustomDeliveredSeenStatus extends StatelessWidget {
 
   Widget getMessageType(MediaType mediaType) {
     if (mediaType == MediaType.text) {
-      return CustomMessageTypeWithIcon(mediaType: mediaType, text: text);
+      return CustomMessageTypeWithIcon(mediaType: MediaType.text, text: text);
     } else {
       return CustomMessageTypeWithIcon(mediaType: mediaType);
     }

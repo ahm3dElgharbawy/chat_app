@@ -28,8 +28,8 @@ class _CustomPasswordTextFieldState extends State<CustomPasswordTextField> with 
         floatingLabelBehavior: FloatingLabelBehavior.always,
         errorMaxLines: 2,
         contentPadding: const EdgeInsets.symmetric(
-          horizontal: AppSizes.md,
-          vertical: AppSizes.md,
+          horizontal: 16,
+          vertical: 16,
         ),
         prefixIcon:  const Icon(Icons.lock),
         suffixIcon: GestureDetector(
