@@ -31,14 +31,23 @@ class _SplashScreenState extends State<SplashScreen> {
       body: Stack(
         alignment: Alignment.center,
         children: [
-          const FadeInImage(
-            height: 200,
-            placeholder: AssetImage(
-              ImageStrings.empty,
-            ),
-            image: AssetImage(
-              ImageStrings.logo,
-            ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const FadeInImage(
+                height: 200,
+                placeholder: AssetImage(
+                  ImageStrings.empty,
+                ),
+                image: AssetImage(
+                  ImageStrings.logo,
+                ),
+              ),
+              Text(
+                "WhatsUp",
+                style: TextStyles.bold22,
+              ),
+            ],
           ),
           Align(
             alignment: Alignment.bottomCenter,
