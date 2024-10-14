@@ -54,7 +54,7 @@ class CustomElevatedButton extends StatelessWidget {
             : FittedBox(
                 child: Text(
                   title,
-                  style: TextStyles.regular16.copyWith(color: Colors.white)
+                  style: TextStyles.bold36.copyWith(color: Colors.black)
                 ),
               ),
       ),

@@ -2,7 +2,7 @@ mixin Validator {
   // Name validation
   String? validateRequiredField(String? value, String? name) {
     if (value == null || value.isEmpty) {
-      return name != null ? '$name is required' : 'This field is required';
+      return name != null ? '* $name is required' : '* this field is required';
     }
     return null;
   }
@@ -10,10 +10,10 @@ mixin Validator {
   // Email validation
   String? validateEmail(String? value) {
     if (value == null || value.isEmpty) {
-      return 'Email is required';
+      return '* email is required';
     } else if (!RegExp(r'^.+@[a-zA-Z]+\.{1}[a-zA-Z]+(\.{0,1}[a-zA-Z]+)$')
         .hasMatch(value)) {
-      return 'Please enter a valid email';
+      return '* please enter a valid email';
     }
     return null;
   }
@@ -21,19 +21,19 @@ mixin Validator {
   // Password validation
   String? validatePassword(String? password) {
     if (password == null || password.isEmpty) {
-      return 'Password is required';
+      return '* password is required';
     }
     bool hasUppercase = password.contains(RegExp(r'[A-Z]'));
     bool hasDigits = password.contains(RegExp(r'\d'));
     bool hasMinLength = password.length >= 6;
     if (!hasMinLength) {
-      return 'Password must be at least 6 characters long';
+      return '* password must be at least 6 characters long';
     }
     if (!hasUppercase) {
-      return 'Password must contain at least one uppercase letter';
+      return '* password must contain at least one uppercase letter';
     }
     if (!hasDigits) {
-      return 'Password must contain at least one number';
+      return '* password must contain at least one number';
     }
     return null;
   }
@@ -41,9 +41,9 @@ mixin Validator {
   // Confirm password validation
   String? validateConfirmPassword(String? confirmation, String originalPassword) {
     if (confirmation == null || confirmation.isEmpty) {
-      return 'Confirm password is required';
+      return '* Confirm password is required';
     } else if (confirmation != originalPassword) {
-      return 'Confirm password does not match';
+      return '* Confirm password does not match';
     }
     return null;
   }

@@ -22,6 +22,7 @@ class AppSizes {
   static const h20 = SizedBox(height: 20);
   static const h25 = SizedBox(height: 25);
   static const h30 = SizedBox(height: 30);
+  static const h40 = SizedBox(height: 40);
   // ======================================
   // horizontal spaces
   // ======================================
