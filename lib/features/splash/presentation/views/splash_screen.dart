@@ -21,7 +21,7 @@ class _SplashScreenState extends State<SplashScreen> {
   // splash screen with duration 2 seconds
   void waitAndGo() {
     Future.delayed(const Duration(seconds: 3), () {
-      context.pushNamed(AppRoutes.login);
+      context.pushReplacementAllNamed(AppRoutes.login);
     });
   }
 
@@ -45,7 +45,7 @@ class _SplashScreenState extends State<SplashScreen> {
               ),
               Text(
                 "WhatsUp",
-                style: TextStyles.bold22,
+                style: TextStyles.bold48,
               ),
             ],
           ),
@@ -55,7 +55,7 @@ class _SplashScreenState extends State<SplashScreen> {
               padding: const EdgeInsets.only(bottom: 100),
               child: Text(
                 "The best chat app of this century",
-                style: TextStyles.regular16,
+                style: TextStyles.regular28,
               ),
             ),
           )
