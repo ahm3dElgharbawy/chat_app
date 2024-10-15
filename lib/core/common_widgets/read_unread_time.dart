@@ -20,7 +20,7 @@ class CustomReadAndUnreadTime extends StatelessWidget {
       children: [
         Text(
           time,
-          style: TextStyles.regular14.copyWith(
+          style: TextStyles.regular28.copyWith(
             color: unReadCount == 0 ? Colors.black : AppColors.primary,
           ),
         ),

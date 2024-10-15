@@ -17,7 +17,6 @@ class CustomCircularContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(5),
       height: size,
       width: size,
       alignment: Alignment.center,
@@ -27,7 +26,7 @@ class CustomCircularContainer extends StatelessWidget {
       ),
       child: Text(
         child,
-        style: TextStyles.semibold12.copyWith(color: textColor),
+        style: TextStyles.semibold26.copyWith(color: textColor),
       ),
     );
   }

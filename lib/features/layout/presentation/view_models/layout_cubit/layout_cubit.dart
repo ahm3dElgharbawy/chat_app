@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:chat_app/features/chats/presentation/views/chats_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -12,7 +13,7 @@ class LayoutCubit extends Cubit<LayoutState> {
   final pageController = PageController(initialPage: 0);
 
   final List<Widget> screens = [
-    const Placeholder(color: Colors.red),
+    const ChatsScreen(),
     const Placeholder(color: Colors.blue),
     const Placeholder(color: Colors.grey),
   ];
