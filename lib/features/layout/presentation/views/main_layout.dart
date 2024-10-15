@@ -1,4 +1,7 @@
+import 'package:chat_app/core/themes/styles.dart';
+import 'package:chat_app/features/layout/presentation/view_models/layout_cubit/layout_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MainLayout extends StatefulWidget {
   const MainLayout({super.key});
@@ -8,47 +11,44 @@ class MainLayout extends StatefulWidget {
 }
 
 class _MainLayoutState extends State<MainLayout> {
-  int currentScreen = 0;
-  final List<Map> navigationItems = [
-    {'icon': Icons.home_rounded, 'label': "home"},
-    {'icon': Icons.calendar_today, 'label': "stories"},
-  ];
-  final List<Widget> screens = [];
-  final pageController = PageController();
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: PageView(
-        controller: pageController,
-        onPageChanged: (newIndex) {
-          setState(() {
-            currentScreen = newIndex;
-          });
-        },
-        children: screens,
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: currentScreen,
-        onTap: (itemIndex) {
-          setState(() {
-            currentScreen = itemIndex;
-            pageController.animateToPage(
-              currentScreen,
-              duration: const Duration(milliseconds: 100),
-              curve: Curves.linear,
-            );
-          });
-        },
-        items: navigationItems
-            .map(
-              (item) => BottomNavigationBarItem(
-                icon: Icon(item['icon']),
-                label: item['label'],
-              ),
-            )
-            .toList(),
-      ),
+    final cubit = LayoutCubit.get(context);
+    return BlocBuilder<LayoutCubit, LayoutState>(
+      builder: (context, state) {
+        return Scaffold(
+          body: PageView(
+            controller: cubit.pageController,
+            physics: const NeverScrollableScrollPhysics(),
+            // onPageChanged: (newIndex) {
+            // cubit.changeBottomNavBar(newIndex);
+            // },
+            children: cubit.screens,
+          ),
+          bottomNavigationBar: Theme(
+            data: Theme.of(context).copyWith(
+              splashColor: Colors.transparent,
+            ), // removing splash effect from navbar
+            child: BottomNavigationBar(
+              backgroundColor: Colors.white,
+              currentIndex: cubit.currentIndex,
+              selectedLabelStyle: TextStyles.regular28,
+              unselectedLabelStyle: TextStyles.regular26,
+              onTap: (index) {
+                cubit.changeBottomNavBar(index);
+              },
+              items: cubit.navigationItems
+                  .map(
+                    (item) => BottomNavigationBarItem(
+                      icon: Icon(item['icon']),
+                      label: item['label'],
+                    ),
+                  )
+                  .toList(),
+            ),
+          ),
+        );
+      },
     );
   }
 }
