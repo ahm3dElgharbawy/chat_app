@@ -9,20 +9,25 @@ import 'package:flutter_svg/flutter_svg.dart';
 class CustomDeliveredSeenStatus extends StatelessWidget {
   const CustomDeliveredSeenStatus({
     super.key,
-    required this.seenStatus,
+    this.seenStatus,
     required this.mediaType,
     this.text,
   });
-  final SeenStatus seenStatus;
+  final SeenStatus? seenStatus;
   final MediaType mediaType;
   final String? text;
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.end,
       children: [
-        SvgPicture.asset(getSeenStatusIcon(seenStatus),width: 20,),
-        AppSizes.w5,
-        getMessageType(mediaType)
+        getMessageType(mediaType),
+        if (seenStatus != null) AppSizes.w5,
+        if (seenStatus != null)
+          SvgPicture.asset(
+            getSeenStatusIcon(seenStatus!),
+            width: 20,
+          ),
       ],
     );
   }

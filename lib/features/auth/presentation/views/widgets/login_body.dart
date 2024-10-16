@@ -6,7 +6,7 @@ import 'package:chat_app/core/extensions/navigation.dart';
 import 'package:chat_app/core/themes/styles.dart';
 import 'package:chat_app/features/auth/presentation/views/widgets/do_not_have_account.dart';
 import 'package:chat_app/features/auth/presentation/views/widgets/login_text_fields.dart';
-import 'package:chat_app/features/home/presentation/views/home_screen.dart';
+import 'package:chat_app/features/chats/presentation/views/chats_screen.dart';
 import 'package:chat_app/features/layout/presentation/views/main_layout.dart';
 import 'package:flutter/material.dart';
 

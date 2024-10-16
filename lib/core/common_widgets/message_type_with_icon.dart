@@ -22,7 +22,7 @@ class CustomMessageTypeWithIcon extends StatelessWidget {
               color: Colors.grey[700],
             ),
             AppSizes.w6,
-            Text("Video", style: TextStyles.regular14)
+            Text("Video", style: TextStyles.regular24)
           ],
         );
       case MediaType.audio:
@@ -34,7 +34,7 @@ class CustomMessageTypeWithIcon extends StatelessWidget {
               color: Colors.grey[700],
             ),
             AppSizes.w6,
-            Text("Audio", style: TextStyles.regular14)
+            Text("Audio", style: TextStyles.regular32)
           ],
         );
       case MediaType.sticker:
@@ -46,7 +46,7 @@ class CustomMessageTypeWithIcon extends StatelessWidget {
               color: Colors.grey[700],
             ),
             AppSizes.w6,
-            Text("Sticker", style: TextStyles.regular14)
+            Text("Sticker", style: TextStyles.regular32)
           ],
         );
       case MediaType.photo:
@@ -58,11 +58,11 @@ class CustomMessageTypeWithIcon extends StatelessWidget {
               color: Colors.grey[700],
             ),
             AppSizes.w6,
-            Text("Photo", style: TextStyles.regular14)
+            Text("Photo", style: TextStyles.regular32)
           ],
         );
       default:
-        return Text(text.toString(), style: TextStyles.regular14);
+        return Text(text.toString(), style: TextStyles.regular28);
     }
   }
 }

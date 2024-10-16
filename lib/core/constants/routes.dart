@@ -11,6 +11,7 @@ class AppRoutes {
   static const String layout = '/layout';
 
   // home feature
-  static const String home = '/home';
+  static const String chats = '/chats';
+  static const String singleChat = '/singleChat';
 
 }

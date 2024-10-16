@@ -19,6 +19,7 @@ class CustomContactCard extends StatelessWidget {
     required this.time,
     required this.unReadCount,
     this.isLastMessageForMe = false,
+    required this.onTap,
   });
   final String userName;
   final String image;
@@ -28,29 +29,41 @@ class CustomContactCard extends StatelessWidget {
   final int unReadCount;
   final String? text;
   final bool isLastMessageForMe;
+  final VoidCallback onTap;
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        CustomCircularImage(image: image),
-        AppSizes.w10,
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(userName,style: TextStyles.medium14),
-            AppSizes.h5,
-            isLastMessageForMe
-                ? CustomDeliveredSeenStatus(
-                    seenStatus: seenStatus,
-                    mediaType: lastMessageType,
-                    text: text,
-                  )
-                : CustomMessageTypeWithIcon(mediaType: lastMessageType,text: text)
-          ],
-        ),
-        const Spacer(),
-        CustomReadAndUnreadTime(unReadCount: unReadCount, time: time)
-      ],
+    return MaterialButton(
+      onPressed: onTap,
+      padding: const EdgeInsets.all(AppSizes.defaultSpace),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          CustomCircularImage(
+            image: image,
+            size: 60,
+          ),
+          AppSizes.w10,
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(userName, style: TextStyles.medium32),
+              AppSizes.h5,
+              isLastMessageForMe
+                  ? CustomDeliveredSeenStatus(
+                      seenStatus: seenStatus,
+                      mediaType: lastMessageType,
+                      text: text,
+                    )
+                  : CustomMessageTypeWithIcon(
+                      mediaType: lastMessageType,
+                      text: text,
+                    )
+            ],
+          ),
+          const Spacer(),
+          CustomReadAndUnreadTime(unReadCount: unReadCount, time: time),
+        ],
+      ),
     );
   }
 }
