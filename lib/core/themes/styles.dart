@@ -254,6 +254,31 @@ abstract class TextStyles {
         color: Colors.black,
         fontFamily: 'Inter',
       );
+  // fs 30
+  static TextStyle get regular30 => TextStyle(
+        fontWeight: FontWeight.w400,
+        fontSize: 30.sp,
+        color: Colors.black,
+        fontFamily: 'Inter',
+      );
+  static TextStyle get medium30 => TextStyle(
+        fontWeight: FontWeight.w500,
+        fontSize: 30.sp,
+        color: Colors.black,
+        fontFamily: 'Inter',
+      );
+  static TextStyle get semibold30 => TextStyle(
+        fontWeight: FontWeight.w600,
+        fontSize: 30.sp,
+        color: Colors.black,
+        fontFamily: 'Inter',
+      );
+  static TextStyle get bold30 => TextStyle(
+        fontWeight: FontWeight.w700,
+        fontSize: 30.sp,
+        color: Colors.black,
+        fontFamily: 'Inter',
+      );
   // fs 32
   static TextStyle get regular32 => TextStyle(
         fontWeight: FontWeight.w400,

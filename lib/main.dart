@@ -44,7 +44,7 @@ class MyApp extends StatelessWidget {
               primary: AppColors.primary,
             ),
           ),
-          initialRoute: AppRoutes.chats,
+          initialRoute: AppRoutes.splash,
           routes: {
             // =============================================
             // to navigate to any screen by it's route name
