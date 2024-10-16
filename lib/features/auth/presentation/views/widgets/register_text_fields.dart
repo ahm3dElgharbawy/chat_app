@@ -38,7 +38,7 @@ class RegisterTextFields extends StatelessWidget {
           controller: phoneController,
           label: "enter your phone",
           hint: "your phone",
-          prefix: const Icon(Icons.mobile_friendly),
+          prefix: const Icon(Icons.phone_android),
           keyboardType: TextInputType.phone,
         ),
         AppSizes.h20,
