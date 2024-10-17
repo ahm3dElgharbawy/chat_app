@@ -3,7 +3,6 @@ import 'package:chat_app/core/constants/image_strings.dart';
 import 'package:chat_app/core/constants/sizes.dart';
 import 'package:chat_app/core/themes/styles.dart';
 import 'package:chat_app/features/auth/presentation/views/widgets/already_have_account.dart';
-import 'package:chat_app/features/auth/presentation/views/widgets/do_not_have_account.dart';
 import 'package:chat_app/features/auth/presentation/views/widgets/register_text_fields.dart';
 import 'package:flutter/material.dart';
 

@@ -1,5 +1,4 @@
 import 'package:chat_app/core/common_widgets/circular_image.dart';
-import 'package:chat_app/core/constants/image_strings.dart';
 import 'package:chat_app/core/constants/sizes.dart';
 import 'package:chat_app/core/themes/styles.dart';
 import 'package:flutter/material.dart';
@@ -28,6 +27,8 @@ class CustomChatAppbar extends StatelessWidget implements PreferredSizeWidget{
         ],
       ),
       titleSpacing: -10,
+      notificationPredicate : (notification) => false, // disable appbar color changing when scrolling
+
       actions: [
         IconButton(onPressed: () {}, icon: const Icon(Icons.videocam_rounded)),
         IconButton(onPressed: () {}, icon: const Icon(Icons.phone)),

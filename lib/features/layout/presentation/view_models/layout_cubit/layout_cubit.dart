@@ -1,6 +1,5 @@
-import 'dart:developer';
-
 import 'package:chat_app/features/chats/presentation/views/chats_screen.dart';
+import 'package:chat_app/features/status/presentation/views/statuses_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -14,7 +13,7 @@ class LayoutCubit extends Cubit<LayoutState> {
 
   final List<Widget> screens = [
     const ChatsScreen(),
-    const Placeholder(color: Colors.blue),
+    const StatusesScreen(),
     const Placeholder(color: Colors.grey),
   ];
   final List<Map> navigationItems = [
@@ -25,10 +24,8 @@ class LayoutCubit extends Cubit<LayoutState> {
 
   void changeBottomNavBar(int newIndex) {
     currentIndex = newIndex;
-    pageController.animateToPage(
+    pageController.jumpToPage(
       newIndex,
-      duration: const Duration(milliseconds: 100),
-      curve: Curves.linear,
     );
     emit(BottomNavigationBarChanged());
   }
