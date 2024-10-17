@@ -24,7 +24,8 @@ class SingleChatScreen extends StatelessWidget {
           children: [
             // messages
             ListView(
-              padding: const EdgeInsets.only(bottom: 100,top: AppSizes.defaultSpace),
+              padding: const EdgeInsets.only(
+                  bottom: 100, top: AppSizes.defaultSpace),
               children: const [
                 CustomMessageBody(
                   message:
@@ -33,8 +34,7 @@ class SingleChatScreen extends StatelessWidget {
                   time: "10:20",
                 ),
                 CustomMessageBody(
-                  message:
-                      "ok thank you very much.",
+                  message: "ok thank you very much.",
                   isMe: true,
                   time: "11:30",
                 ),

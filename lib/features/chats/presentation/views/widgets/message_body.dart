@@ -32,7 +32,7 @@ class CustomMessageBody extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
           ),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               //? message
               ReadMoreText(
