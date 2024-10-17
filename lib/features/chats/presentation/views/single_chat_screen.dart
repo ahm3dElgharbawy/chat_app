@@ -13,18 +13,18 @@ class SingleChatScreen extends StatelessWidget {
     final messageController = TextEditingController();
     return Scaffold(
       appBar: const CustomChatAppbar(
-        username: "Ahmed elsafy",
+        username: "Ahmed Elsafy",
         image: ImageStrings.user,
       ),
       backgroundColor: const Color(0xffece6df),
       body: Padding(
-        padding: const EdgeInsets.all(AppSizes.defaultSpace),
+        padding: const EdgeInsets.all(AppSizes.defaultSpace).copyWith(top: 0),
         child: Stack(
           fit: StackFit.expand,
           children: [
             // messages
             ListView(
-              padding: const EdgeInsets.only(bottom: 100),
+              padding: const EdgeInsets.only(bottom: 100,top: AppSizes.defaultSpace),
               children: const [
                 CustomMessageBody(
                   message:

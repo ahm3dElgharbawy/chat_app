@@ -4,6 +4,7 @@ import 'package:chat_app/core/enums/media_type.dart';
 import 'package:chat_app/core/enums/seen_status.dart';
 import 'package:chat_app/core/helpers/responsive_helpers/size_helper_extensions.dart';
 import 'package:chat_app/core/themes/colors.dart';
+import 'package:chat_app/core/themes/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:readmore/readmore.dart';
 
@@ -38,6 +39,9 @@ class CustomMessageBody extends StatelessWidget {
                 message,
                 trimMode: TrimMode.Line,
                 trimLines: 8,
+                moreStyle: TextStyles.semibold28.copyWith(color: AppColors.primary),
+                trimExpandedText: "",
+                trimCollapsedText: "Read more",
               ),
               AppSizes.h5,
               //? time of sending or received & seen status

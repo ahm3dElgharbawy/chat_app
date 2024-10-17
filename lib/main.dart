@@ -10,6 +10,7 @@ import 'package:chat_app/features/chats/presentation/views/chats_screen.dart';
 import 'package:chat_app/features/chats/presentation/views/single_chat_screen.dart';
 import 'package:chat_app/features/splash/presentation/views/splash_screen.dart';
 import 'package:chat_app/features/layout/presentation/views/main_layout.dart';
+import 'package:chat_app/features/status/presentation/views/statuses_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -44,7 +45,7 @@ class MyApp extends StatelessWidget {
               primary: AppColors.primary,
             ),
           ),
-          initialRoute: AppRoutes.splash,
+          initialRoute: AppRoutes.layout,
           routes: {
             // =============================================
             // to navigate to any screen by it's route name
@@ -56,6 +57,7 @@ class MyApp extends StatelessWidget {
             AppRoutes.register: (context) => const RegisterScreen(),
             AppRoutes.chats: (context) => const ChatsScreen(),
             AppRoutes.singleChat: (context) => const SingleChatScreen(),
+            AppRoutes.statuses: (context) => const StatusesScreen(),
           },
         ),
       ),

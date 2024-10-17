@@ -16,8 +16,9 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: Text(title, style: TextStyles.medium48),
       elevation: 1,
       shadowColor: Colors.grey,
-      backgroundColor: Colors.white,
       automaticallyImplyLeading: false,
+      notificationPredicate : (notification) => false, // disable appbar color changing when scrolling
+      surfaceTintColor: Colors.transparent,
       actions: [
         IconButton(
           onPressed: onTapSearch,
@@ -27,7 +28,15 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
           ),
         ),
         PopupMenuButton(
-          itemBuilder: (context) => [],
+          position: PopupMenuPosition.under,
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+          itemBuilder: (context) => [
+            PopupMenuItem(
+              child: Text("Profile", style: TextStyles.regular30),
+              onTap: () {},
+            ),
+          ],
         ),
       ],
     );
