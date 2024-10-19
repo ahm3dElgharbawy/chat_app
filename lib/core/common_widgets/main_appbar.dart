@@ -1,3 +1,5 @@
+import 'package:chat_app/core/constants/routes.dart';
+import 'package:chat_app/core/extensions/navigation.dart';
 import 'package:chat_app/core/themes/styles.dart';
 import 'package:flutter/material.dart';
 
@@ -34,7 +36,9 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
           itemBuilder: (context) => [
             PopupMenuItem(
               child: Text("Profile", style: TextStyles.regular30),
-              onTap: () {},
+              onTap: () {
+                context.pushNamed(AppRoutes.profile);
+              },
             ),
           ],
         ),

@@ -6,6 +6,7 @@ class CustomElevatedButton extends StatelessWidget {
   const CustomElevatedButton({
     super.key,
     required this.title,
+    this.prefix,
     this.onTap,
     this.width = double.infinity,
     this.height,
@@ -16,6 +17,7 @@ class CustomElevatedButton extends StatelessWidget {
     this.shape,
   });
   final String title;
+  final Widget? prefix;
   final VoidCallback? onTap;
   final double? width;
   final double? height;
@@ -51,12 +53,20 @@ class CustomElevatedButton extends StatelessWidget {
                   ),
                 ),
               )
-            : FittedBox(
-                child: Text(
-                  title,
-                  style: TextStyles.bold36.copyWith(color: Colors.black)
+            : Row(
+              // mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                if (prefix != null) Padding(
+                  padding: const EdgeInsetsDirectional.only(end: 10),
+                  child: prefix!,
                 ),
-              ),
+                Text(
+                  title,
+                  style: TextStyles.bold34.copyWith(color: Colors.white),
+                ),
+              ],
+            ),
       ),
     );
   }
