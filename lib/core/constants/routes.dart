@@ -10,9 +10,12 @@ class AppRoutes {
   // layout
   static const String layout = '/layout';
 
-  // home feature
+  // chat feature
   static const String chats = '/chats';
   static const String singleChat = '/singleChat';
+  // status feature
   static const String statuses = '/statuses';
+  // profile feature
+  static const String profile = '/profile';
 
 }

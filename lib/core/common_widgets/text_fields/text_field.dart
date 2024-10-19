@@ -53,7 +53,7 @@ class CustomTextField extends StatelessWidget with Validator {
       style: const TextStyle(fontSize: 16),
       
       decoration: InputDecoration(
-        label: Text("$label"),
+        label: label != null ? Text("$label") : null,
         hintText: hint,
         hintStyle: TextStyles.regular34.copyWith(color: Colors.grey),
         prefixIcon: prefix,

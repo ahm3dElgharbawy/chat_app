@@ -19,7 +19,7 @@ class CustomDeliveredSeenStatus extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.end,
+      mainAxisSize: MainAxisSize.min,
       children: [
         getMessageType(mediaType),
         if (seenStatus != null) AppSizes.w5,
