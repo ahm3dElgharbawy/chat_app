@@ -1,16 +1,11 @@
-# chat_app
+# Chat App
+## Splash
+<img height=500 src="https://github.com/user-attachments/assets/93080b95-cd3c-4285-8c40-a8705ab057ad">
 
-A new Flutter project.
+## Auth
+<img height=500 src="https://github.com/user-attachments/assets/6bd8acc7-ccc8-498b-a922-2b059de778bd">
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Other Features 
+<img height=500 src="https://github.com/user-attachments/assets/08752789-8c16-4cb8-bbf1-c6ff350531f7">
+<img height=500 src="https://github.com/user-attachments/assets/a610c215-0eb7-42a1-ad3e-e3356e01089b">
+<img height=500 src="https://github.com/user-attachments/assets/e62af1bb-b0cf-405f-8651-5c52fccb2cbc">
