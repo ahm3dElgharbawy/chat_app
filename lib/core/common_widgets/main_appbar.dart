@@ -14,12 +14,19 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<Map> popupMenuItems = [
+      {'title': 'Profile', 'target': AppRoutes.profile},
+      {'title': 'New group', 'target': AppRoutes.newGroup},
+      {'title': 'Settings', 'target': AppRoutes.settings},
+      {'title': 'Logout', 'target': AppRoutes.login, 'color': Colors.red},
+    ];
     return AppBar(
       title: Text(title, style: TextStyles.medium48),
       elevation: 1,
       shadowColor: Colors.grey,
       automaticallyImplyLeading: false,
-      notificationPredicate : (notification) => false, // disable appbar color changing when scrolling
+      notificationPredicate: (notification) =>
+          false, // disable appbar color changing when scrolling
       surfaceTintColor: Colors.transparent,
       actions: [
         IconButton(
@@ -34,11 +41,17 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
           itemBuilder: (context) => [
-            PopupMenuItem(
-              child: Text("Profile", style: TextStyles.regular30),
-              onTap: () {
-                context.pushNamed(AppRoutes.profile);
-              },
+            ...popupMenuItems.map<PopupMenuItem>(
+              (item) => PopupMenuItem(
+                child: Text(
+                  item['title'],
+                  style: TextStyles.regular30
+                      .copyWith(color: item['color'] ?? Colors.black),
+                ),
+                onTap: () {
+                  context.pushNamed(item['target']);
+                },
+              ),
             ),
           ],
         ),
