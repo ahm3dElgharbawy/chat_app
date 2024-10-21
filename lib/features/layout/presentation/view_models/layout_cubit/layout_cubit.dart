@@ -1,3 +1,4 @@
+import 'package:chat_app/features/calls/presentation/views/calls_screen.dart';
 import 'package:chat_app/features/chats/presentation/views/chats_screen.dart';
 import 'package:chat_app/features/status/presentation/views/statuses_screen.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +15,7 @@ class LayoutCubit extends Cubit<LayoutState> {
   final List<Widget> screens = [
     const ChatsScreen(),
     const StatusesScreen(),
-    const Placeholder(color: Colors.grey),
+    const CallsScreen(),
   ];
   final List<Map> navigationItems = [
     {'icon': Icons.chat, 'label': "Chats"},

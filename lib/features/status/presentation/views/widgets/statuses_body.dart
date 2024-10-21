@@ -1,6 +1,7 @@
+import 'package:chat_app/core/common_widgets/list_tile.dart';
 import 'package:chat_app/core/constants/sizes.dart';
-import 'package:chat_app/features/status/presentation/views/widgets/status_card.dart';
-import 'package:chat_app/features/status/presentation/views/widgets/status_section_text.dart';
+import 'package:chat_app/core/themes/colors.dart';
+import 'package:chat_app/core/common_widgets/section_text.dart';
 import 'package:flutter/material.dart';
 
 class StatusesBody extends StatelessWidget {
@@ -12,27 +13,31 @@ class StatusesBody extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          CustomStatusCard(
+          CustomListTile(
             title: "My Status",
             subtitle: "tap to add status update",
-            showAddIcon: true,
             onTap: () {},
+            subLeading: const Icon(
+              Icons.add_circle_outline_rounded,
+              color: AppColors.primary,
+              size: 20,
+            ),
           ),
           AppSizes.h10,
-          const CustomStatusSectionText(text: 'Recent updates'),
+          const CustomSectionText(text: 'Recent updates'),
           ...List.generate(
             3,
-            (i) => CustomStatusCard(
+            (i) => CustomListTile(
               title: "Marwan Ali",
               subtitle: "Today, 12:00 PM",
               onTap: () {},
             ),
           ),
           AppSizes.h10,
-          const CustomStatusSectionText(text: 'Viewed updates'),
+          const CustomSectionText(text: 'Viewed updates'),
           ...List.generate(
             3,
-            (i) => CustomStatusCard(
+            (i) => CustomListTile(
               title: "Marwan Ali",
               subtitle: "Today, 12:00 PM",
               onTap: () {},

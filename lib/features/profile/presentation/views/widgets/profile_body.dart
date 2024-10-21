@@ -1,7 +1,5 @@
 import 'package:chat_app/core/common_widgets/buttons/elevated_button.dart';
-import 'package:chat_app/core/common_widgets/text_fields/text_field.dart';
 import 'package:chat_app/core/constants/sizes.dart';
-import 'package:chat_app/core/themes/styles.dart';
 import 'package:chat_app/features/profile/presentation/views/widgets/profile_avatar.dart';
 import 'package:chat_app/features/profile/presentation/views/widgets/profile_text_fields.dart';
 import 'package:flutter/material.dart';

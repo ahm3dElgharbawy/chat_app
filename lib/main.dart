@@ -6,6 +6,7 @@ import 'package:chat_app/core/services/custom_bloc_observer.dart';
 import 'package:chat_app/core/themes/colors.dart';
 import 'package:chat_app/features/auth/presentation/views/login_screen.dart';
 import 'package:chat_app/features/auth/presentation/views/register_screen.dart';
+import 'package:chat_app/features/calls/presentation/views/calls_screen.dart';
 import 'package:chat_app/features/chats/presentation/views/chats_screen.dart';
 import 'package:chat_app/features/chats/presentation/views/single_chat_screen.dart';
 import 'package:chat_app/features/profile/presentation/views/profile_screen.dart';
@@ -46,7 +47,7 @@ class MyApp extends StatelessWidget {
               primary: AppColors.primary,
             ),
           ),
-          initialRoute: AppRoutes.splash,
+          initialRoute: AppRoutes.layout,
           routes: {
             // =============================================
             // to navigate to any screen by it's route name
@@ -60,6 +61,7 @@ class MyApp extends StatelessWidget {
             AppRoutes.singleChat: (context) => const SingleChatScreen(),
             AppRoutes.statuses: (context) => const StatusesScreen(),
             AppRoutes.profile: (context) => const ProfileScreen(),
+            AppRoutes.calls: (context) => const CallsScreen(),
           },
         ),
       ),
