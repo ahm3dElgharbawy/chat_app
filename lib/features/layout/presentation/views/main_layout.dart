@@ -1,3 +1,5 @@
+import 'package:chat_app/features/layout/presentation/views/widgets/main_appbar.dart';
+import 'package:chat_app/core/themes/colors.dart';
 import 'package:chat_app/core/themes/styles.dart';
 import 'package:chat_app/features/layout/presentation/view_models/layout_cubit/layout_cubit.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +19,14 @@ class _MainLayoutState extends State<MainLayout> {
     return BlocBuilder<LayoutCubit, LayoutState>(
       builder: (context, state) {
         return Scaffold(
+          appBar: const MainAppBar(),
+          floatingActionButton: cubit.currentIndex == 0
+              ? FloatingActionButton(
+                  onPressed: () {},
+                  backgroundColor: AppColors.primary,
+                  child: const Icon(Icons.chat),
+                )
+              : null,
           body: PageView(
             controller: cubit.pageController,
             physics: const NeverScrollableScrollPhysics(),
