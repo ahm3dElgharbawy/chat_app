@@ -15,7 +15,7 @@ class CallsBody extends StatelessWidget {
         children: [
           const CustomSectionText(text: 'Recent'),
           ...List.generate(
-            10,
+            6,
             (i) => CustomListTile(
               title: "Marwan Ali",
               subtitle: "Today, 12:00 PM",

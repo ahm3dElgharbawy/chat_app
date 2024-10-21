@@ -31,4 +31,5 @@ extension ResponsiveSize on num {
   double get h => MyApp.navigatorKey.currentContext?.setHeight(this) ?? toDouble();
   double get w => MyApp.navigatorKey.currentContext?.setWidth(this) ??  toDouble();
   double get sp => MyApp.navigatorKey.currentContext?.setSp(this) ??  toDouble();
+  double get r => MyApp.navigatorKey.currentContext?.setMinSize(this) ??  toDouble();
 }
