@@ -1,8 +1,4 @@
-import 'package:chat_app/core/constants/image_strings.dart';
-import 'package:chat_app/core/constants/sizes.dart';
-import 'package:chat_app/core/themes/colors.dart';
 import 'package:chat_app/core/themes/styles.dart';
-import 'package:chat_app/features/profile/presentation/views/widgets/profile_avatar.dart';
 import 'package:chat_app/features/profile/presentation/views/widgets/profile_body.dart';
 import 'package:flutter/material.dart';
 

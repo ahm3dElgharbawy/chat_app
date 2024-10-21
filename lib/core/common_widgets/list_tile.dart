@@ -4,18 +4,24 @@ import 'package:chat_app/core/themes/colors.dart';
 import 'package:chat_app/core/themes/styles.dart';
 import 'package:flutter/material.dart';
 
-class CustomStatusCard extends StatelessWidget {
-  const CustomStatusCard({
+class CustomListTile extends StatelessWidget {
+  const CustomListTile({
     super.key,
     required this.title,
     required this.subtitle,
     required this.onTap,
-    this.showAddIcon = false,
+    this.image = ImageStrings.user,
+    this.enableBorder = false,
+    this.subLeading,
+    this.trailing,
   });
   final String title;
   final String subtitle;
+  final String image;
+  final bool enableBorder;
   final VoidCallback onTap;
-  final bool showAddIcon;
+  final Widget? subLeading;
+  final Widget? trailing;
 
   @override
   Widget build(BuildContext context) {
@@ -32,34 +38,26 @@ class CustomStatusCard extends StatelessWidget {
                 width: 55,
                 margin: const EdgeInsetsDirectional.only(end: 5),
                 decoration: BoxDecoration(
-                  image: const DecorationImage(
-                    image: AssetImage(ImageStrings.user),
-                  ),
-                  shape: BoxShape.circle,
-                  border: showAddIcon
-                      ? null
-                      : Border.all(color: AppColors.primary, width: 2),
-                ),
+                    image: const DecorationImage(
+                      image: AssetImage(ImageStrings.user),
+                    ),
+                    shape: BoxShape.circle,
+                    border: enableBorder
+                        ? Border.all(color: AppColors.primary)
+                        : null),
               ),
-              //? add status icon
-              Visibility(
-                visible: showAddIcon,
-                child: Positioned(
+              //? addition icons on avatar
+              if (subLeading != null)
+                Positioned(
                   right: 0,
                   bottom: 0,
                   child: Container(
-                    decoration: const BoxDecoration(
-                      color: Colors.white,
-                      shape: BoxShape.circle,
-                    ),
-                    child: const Icon(
-                      Icons.add_circle_outline_rounded,
-                      color: AppColors.primary,
-                      size: 20,
-                    ),
-                  ),
+                      decoration: const BoxDecoration(
+                        color: Colors.white,
+                        shape: BoxShape.circle,
+                      ),
+                      child: subLeading),
                 ),
-              )
             ],
           ),
           AppSizes.w10,
@@ -70,7 +68,9 @@ class CustomStatusCard extends StatelessWidget {
               Text(subtitle,
                   style: TextStyles.regular30.copyWith(color: Colors.grey)),
             ],
-          )
+          ),
+          if (trailing != null) const Spacer(),
+          if (trailing != null) trailing!
         ],
       ),
     );
