@@ -11,14 +11,14 @@ class CustomListTile extends StatelessWidget {
     required this.subtitle,
     required this.onTap,
     this.image = ImageStrings.user,
-    this.enableBorder = false,
+    this.isImageBordered = false,
     this.subLeading,
     this.trailing,
   });
   final String title;
   final String subtitle;
   final String image;
-  final bool enableBorder;
+  final bool isImageBordered;
   final VoidCallback onTap;
   final Widget? subLeading;
   final Widget? trailing;
@@ -38,13 +38,14 @@ class CustomListTile extends StatelessWidget {
                 width: 55,
                 margin: const EdgeInsetsDirectional.only(end: 5),
                 decoration: BoxDecoration(
-                    image: const DecorationImage(
-                      image: AssetImage(ImageStrings.user),
-                    ),
-                    shape: BoxShape.circle,
-                    border: enableBorder
-                        ? Border.all(color: AppColors.primary)
-                        : null),
+                  image: const DecorationImage(
+                    image: AssetImage(ImageStrings.user),
+                  ),
+                  shape: BoxShape.circle,
+                  border: isImageBordered
+                      ? Border.all(color: AppColors.primary,width: 2)
+                      : null,
+                ),
               ),
               //? addition icons on avatar
               if (subLeading != null)
@@ -64,9 +65,9 @@ class CustomListTile extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(title, style: TextStyles.semibold30),
+              Text(title, style: TextStyles.semibold15),
               Text(subtitle,
-                  style: TextStyles.regular30.copyWith(color: Colors.grey)),
+                  style: TextStyles.regular15.copyWith(color: Colors.grey)),
             ],
           ),
           if (trailing != null) const Spacer(),

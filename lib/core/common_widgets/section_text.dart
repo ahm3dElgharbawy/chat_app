@@ -9,7 +9,7 @@ class CustomSectionText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: AppSizes.defaultSpace),
-      child:Text(text, style: TextStyles.medium28.copyWith(color: Colors.grey)),
+      child:Text(text, style: TextStyles.medium14.copyWith(color: Colors.grey)),
     );
   }
 }

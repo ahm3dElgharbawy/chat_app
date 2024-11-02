@@ -39,7 +39,7 @@ class CustomMessageBody extends StatelessWidget {
                 message,
                 trimMode: TrimMode.Line,
                 trimLines: 8,
-                moreStyle: TextStyles.semibold28.copyWith(color: AppColors.primary),
+                moreStyle: TextStyles.semibold14.copyWith(color: AppColors.primary),
                 trimExpandedText: "",
                 trimCollapsedText: "Read more",
               ),

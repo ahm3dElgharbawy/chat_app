@@ -24,13 +24,13 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-  
+
   static final navigatorKey = GlobalKey<NavigatorState>();
 
   @override
   Widget build(BuildContext context) {
     return SizedProvider(
-      designSize: const Size(720, 1600), // screen width and height taken from figma
+      designSize: const Size(360, 690),
       height: context.screenHeight,
       width: context.screenWidth,
       child: MultiBlocProvider(

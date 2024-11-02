@@ -45,7 +45,7 @@ class _SplashScreenState extends State<SplashScreen> {
               ),
               Text(
                 "WhatsUp",
-                style: TextStyles.bold48,
+                style: TextStyles.bold24,
               ),
             ],
           ),
@@ -55,7 +55,7 @@ class _SplashScreenState extends State<SplashScreen> {
               padding: const EdgeInsets.only(bottom: 100),
               child: Text(
                 "The best chat app of this century",
-                style: TextStyles.regular28,
+                style: TextStyles.regular14,
               ),
             ),
           )

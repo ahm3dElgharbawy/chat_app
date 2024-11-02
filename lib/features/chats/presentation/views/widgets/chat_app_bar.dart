@@ -20,7 +20,7 @@ class CustomChatAppbar extends StatelessWidget implements PreferredSizeWidget{
           Expanded(
             child: Text(
               username,
-              style: TextStyles.medium34,
+              style: TextStyles.medium17,
               overflow: TextOverflow.ellipsis,
             ),
           )

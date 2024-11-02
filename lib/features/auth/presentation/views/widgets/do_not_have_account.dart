@@ -12,14 +12,14 @@ class DoNotHaveAccount extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text("Don’t have an account?", style: TextStyles.bold28),
+        Text("Don’t have an account?", style: TextStyles.bold14),
         TextButton(
           onPressed: () {
             context.pushReplacementNamed(AppRoutes.register);
           },
           child: Text(
             "Register here",
-            style: TextStyles.bold28.copyWith(color: AppColors.primary),
+            style: TextStyles.bold14.copyWith(color: AppColors.primary),
           ),
         )
       ],

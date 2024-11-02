@@ -32,15 +32,15 @@ class LoginBody extends StatelessWidget {
               ),
       
               //? Login title
-              Text("Log in to your account", style: TextStyles.bold48),
-              AppSizes.h40,
+              Text("Log in to your account", style: TextStyles.bold24),
+              AppSizes.h30,
               
               //? Login text fields
               LoginTextFields(
                 emailController: emailController,
                 passwordController: passwordController,
               ),
-              AppSizes.h40,
+              AppSizes.h30,
       
               //? Login button
               CustomElevatedButton(
@@ -50,7 +50,7 @@ class LoginBody extends StatelessWidget {
                   context.pushReplacementAllNamed(AppRoutes.layout);
                 },
               ),
-              AppSizes.h40,
+              AppSizes.h30,
       
               //? Don't have account
               const DoNotHaveAccount()

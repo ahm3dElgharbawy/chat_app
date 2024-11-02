@@ -32,8 +32,8 @@ class RegisterBody extends StatelessWidget {
               ),
       
               //? Login title
-              Text("Register to new account", style: TextStyles.bold48),
-              AppSizes.h40,
+              Text("Register to new account", style: TextStyles.bold24),
+              AppSizes.h30,
               
               //? Login text fields
               RegisterTextFields(
@@ -42,7 +42,7 @@ class RegisterBody extends StatelessWidget {
                 phoneController: phoneController,
                 passwordController: passwordController,
               ),
-              AppSizes.h40,
+              AppSizes.h30,
       
               //? Login button
               CustomElevatedButton(
@@ -53,7 +53,7 @@ class RegisterBody extends StatelessWidget {
                   }
                 },
               ),
-              AppSizes.h40,
+              AppSizes.h30,
       
               //? already have an account
               const AlreadyHaveAnAccount()

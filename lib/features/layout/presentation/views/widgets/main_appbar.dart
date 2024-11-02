@@ -21,7 +21,7 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
       {'title': 'Logout', 'target': AppRoutes.login, 'color': Colors.red},
     ];
     return AppBar(
-      title: Text(title, style: TextStyles.medium48),
+      title: Text(title, style: TextStyles.medium24),
       elevation: 1,
       shadowColor: Colors.grey,
       automaticallyImplyLeading: false,
@@ -45,7 +45,7 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
               (item) => PopupMenuItem(
                 child: Text(
                   item['title'],
-                  style: TextStyles.regular30
+                  style: TextStyles.regular14
                       .copyWith(color: item['color'] ?? Colors.black),
                 ),
                 onTap: () {

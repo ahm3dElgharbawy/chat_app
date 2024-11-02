@@ -25,7 +25,9 @@ class SingleChatScreen extends StatelessWidget {
             // messages
             ListView(
               padding: const EdgeInsets.only(
-                  bottom: 100, top: AppSizes.defaultSpace),
+                bottom: 100,
+                top: AppSizes.defaultSpace,
+              ),
               children: const [
                 CustomMessageBody(
                   message:

@@ -42,8 +42,8 @@ class _MainLayoutState extends State<MainLayout> {
             child: BottomNavigationBar(
               backgroundColor: Colors.white,
               currentIndex: cubit.currentIndex,
-              selectedLabelStyle: TextStyles.regular28,
-              unselectedLabelStyle: TextStyles.regular26,
+              selectedLabelStyle: TextStyles.regular14,
+              unselectedLabelStyle: TextStyles.regular12,
               onTap: (index) {
                 cubit.changeBottomNavBar(index);
               },

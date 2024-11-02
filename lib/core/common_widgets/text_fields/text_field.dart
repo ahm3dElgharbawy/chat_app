@@ -18,8 +18,9 @@ class CustomTextField extends StatelessWidget with Validator {
     this.isRequired = true,
     this.readOnly = false,
     this.expands = false,
-    this.obscureText  = false,
-    this.onChanged, this.validator,
+    this.obscureText = false,
+    this.onChanged,
+    this.validator,
   });
   final String? hint;
   final String? label;
@@ -50,12 +51,11 @@ class CustomTextField extends StatelessWidget with Validator {
         // FocusScope.of(context).unfocus();
       },
       obscureText: obscureText,
-      style: const TextStyle(fontSize: 16),
-      
+      style: TextStyles.regular16,
       decoration: InputDecoration(
-        label: label != null ? Text("$label") : null,
+        label: label != null ? Text("$label", style: TextStyles.regular14) : null,
         hintText: hint,
-        hintStyle: TextStyles.regular34.copyWith(color: Colors.grey),
+        hintStyle: TextStyles.regular16.copyWith(color: Colors.grey),
         prefixIcon: prefix,
         suffixIcon: suffix,
         filled: true,
@@ -73,20 +73,18 @@ class CustomTextField extends StatelessWidget with Validator {
           borderRadius: BorderRadius.circular(5),
           borderSide: const BorderSide(color: AppColors.primary, width: 2),
         ),
-        contentPadding: const EdgeInsets.symmetric(
-          horizontal: 16,
-          vertical: 16,
-        ),
+        contentPadding: const EdgeInsets.all(16),
       ),
-      validator: validator ?? (value) {
-              if (!isRequired) {
-                return null;
-              } else if (keyboardType == TextInputType.emailAddress) {
-                return validateEmail(value);
-              } else {
-                return validateRequiredField(value, hint);
-              }
-            },
+      validator: validator ??
+          (value) {
+            if (!isRequired) {
+              return null;
+            } else if (keyboardType == TextInputType.emailAddress) {
+              return validateEmail(value);
+            } else {
+              return validateRequiredField(value, hint);
+            }
+          },
     );
   }
 }

@@ -22,7 +22,7 @@ class LoginTextFields extends StatelessWidget {
           prefix: const Icon(Icons.email),
           keyboardType: TextInputType.emailAddress,
         ),
-        AppSizes.h20,
+        AppSizes.h15,
         CustomPasswordTextField(
           controller: passwordController,
           label: "enter your password",

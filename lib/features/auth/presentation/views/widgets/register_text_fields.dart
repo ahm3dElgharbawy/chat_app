@@ -25,7 +25,7 @@ class RegisterTextFields extends StatelessWidget {
           hint: "your name",
           prefix: const Icon(Icons.person),
         ),
-        AppSizes.h20,
+        AppSizes.h15,
         CustomTextField(
           controller: emailController,
           label: "enter your email",
@@ -33,7 +33,7 @@ class RegisterTextFields extends StatelessWidget {
           prefix: const Icon(Icons.email),
           keyboardType: TextInputType.emailAddress,
         ),
-        AppSizes.h20,
+        AppSizes.h15,
         CustomTextField(
           controller: phoneController,
           label: "enter your phone",
@@ -41,7 +41,7 @@ class RegisterTextFields extends StatelessWidget {
           prefix: const Icon(Icons.phone_android),
           keyboardType: TextInputType.phone,
         ),
-        AppSizes.h20,
+        AppSizes.h15,
         CustomPasswordTextField(
           controller: passwordController,
           label: "enter your password",

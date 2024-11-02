@@ -14,7 +14,7 @@ class ProfileTextFields extends StatelessWidget {
       children: [
         Text(
           "Name",
-          style: TextStyles.semibold34.copyWith(color: Colors.grey[600]),
+          style: TextStyles.semibold17.copyWith(color: Colors.grey[600]),
         ),
         AppSizes.h10,
         CustomTextField(
@@ -24,7 +24,7 @@ class ProfileTextFields extends StatelessWidget {
         AppSizes.h15,
         Text(
           "Phone",
-          style: TextStyles.semibold34.copyWith(color: Colors.grey[600]),
+          style: TextStyles.semibold17.copyWith(color: Colors.grey[600]),
         ),
         AppSizes.h10,
         CustomTextField(

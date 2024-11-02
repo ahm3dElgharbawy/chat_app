@@ -46,7 +46,7 @@ class CustomContactCard extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(userName, style: TextStyles.medium32),
+              Text(userName, style: TextStyles.medium16),
               AppSizes.h5,
               isLastMessageForMe
                   ? CustomDeliveredSeenStatus(

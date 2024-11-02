@@ -38,7 +38,7 @@ class _CustomSendMessageFieldState extends State<CustomSendMessageField> {
                   // fillColor: AppColors.white,
                   filled: true,
                   hintText: "Message",
-                  hintStyle: TextStyles.medium30.copyWith(color: Colors.grey),
+                  hintStyle: TextStyles.medium15.copyWith(color: Colors.grey),
                   contentPadding:
                       const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                   border: OutlineInputBorder(

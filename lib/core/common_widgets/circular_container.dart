@@ -26,7 +26,7 @@ class CustomCircularContainer extends StatelessWidget {
       ),
       child: Text(
         child,
-        style: TextStyles.semibold26.copyWith(color: textColor),
+        style: TextStyles.semibold12.copyWith(color: textColor),
       ),
     );
   }

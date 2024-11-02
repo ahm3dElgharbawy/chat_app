@@ -12,14 +12,14 @@ class AlreadyHaveAnAccount extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text("Already have an account?", style: TextStyles.bold28),
+        Text("Already have an account?", style: TextStyles.bold14),
         TextButton(
           onPressed: () {
             context.pushReplacementNamed(AppRoutes.login);
           },
           child: Text(
             "Login here",
-            style: TextStyles.bold28.copyWith(color: AppColors.primary),
+            style: TextStyles.bold14.copyWith(color: AppColors.primary),
           ),
         )
       ],
