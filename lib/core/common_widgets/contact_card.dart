@@ -5,6 +5,7 @@ import 'package:chat_app/core/common_widgets/read_unread_time.dart';
 import 'package:chat_app/core/constants/sizes.dart';
 import 'package:chat_app/core/enums/media_type.dart';
 import 'package:chat_app/core/enums/seen_status.dart';
+import 'package:chat_app/core/helpers/responsive_helpers/size_helper_extensions.dart';
 import 'package:chat_app/core/themes/styles.dart';
 import 'package:flutter/material.dart';
 
@@ -34,16 +35,16 @@ class CustomContactCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialButton(
       onPressed: onTap,
-      padding: const EdgeInsets.all(AppSizes.defaultSpace),
+      padding: EdgeInsets.all(AppSizes.defaultSpace.r),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           CustomCircularImage(
             image: image,
-            size: 60,
+            size: 60.r,
           ),
           AppSizes.w10,
-          Column(
+        Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(userName, style: TextStyles.medium16),

@@ -1,6 +1,7 @@
 import 'package:chat_app/core/constants/image_strings.dart';
 import 'package:chat_app/core/constants/routes.dart';
 import 'package:chat_app/core/extensions/navigation.dart';
+import 'package:chat_app/core/helpers/responsive_helpers/size_helper_extensions.dart';
 import 'package:chat_app/core/themes/styles.dart';
 import 'package:flutter/material.dart';
 
@@ -34,12 +35,12 @@ class _SplashScreenState extends State<SplashScreen> {
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const FadeInImage(
-                height: 200,
-                placeholder: AssetImage(
+              FadeInImage(
+                height: 200.h,
+                placeholder: const AssetImage(
                   ImageStrings.empty,
                 ),
-                image: AssetImage(
+                image: const AssetImage(
                   ImageStrings.logo,
                 ),
               ),
@@ -52,7 +53,7 @@ class _SplashScreenState extends State<SplashScreen> {
           Align(
             alignment: Alignment.bottomCenter,
             child: Padding(
-              padding: const EdgeInsets.only(bottom: 100),
+              padding: EdgeInsets.only(bottom: 100.h),
               child: Text(
                 "The best chat app of this century",
                 style: TextStyles.regular14,

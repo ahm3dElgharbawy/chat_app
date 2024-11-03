@@ -1,4 +1,5 @@
 import 'package:chat_app/core/constants/sizes.dart';
+import 'package:chat_app/core/helpers/responsive_helpers/size_helper_extensions.dart';
 import 'package:chat_app/core/themes/styles.dart';
 import 'package:flutter/material.dart';
 
@@ -8,7 +9,7 @@ class CustomSectionText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: AppSizes.defaultSpace),
+      padding: EdgeInsets.symmetric(horizontal: AppSizes.defaultSpace.r),
       child:Text(text, style: TextStyles.medium14.copyWith(color: Colors.grey)),
     );
   }

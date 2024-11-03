@@ -1,6 +1,8 @@
+import 'package:chat_app/core/common_widgets/buttons/icon_button.dart';
 import 'package:chat_app/core/common_widgets/list_tile.dart';
 import 'package:chat_app/core/constants/sizes.dart';
 import 'package:chat_app/core/common_widgets/section_text.dart';
+import 'package:chat_app/core/helpers/responsive_helpers/size_helper_extensions.dart';
 import 'package:flutter/material.dart';
 
 class CallsBody extends StatelessWidget {
@@ -20,9 +22,9 @@ class CallsBody extends StatelessWidget {
               title: "Marwan Ali",
               subtitle: "Today, 12:00 PM",
               onTap: () {},
-              trailing: IconButton(
-                icon: const Icon(Icons.call),
-                onPressed: () {},
+              trailing: CustomIconButton(
+                icon: Icon(Icons.call,size: 24.r),
+                onTap: () {},
               ),
             ),
           ),

@@ -1,5 +1,6 @@
 import 'package:chat_app/core/common_widgets/list_tile.dart';
 import 'package:chat_app/core/constants/sizes.dart';
+import 'package:chat_app/core/helpers/responsive_helpers/size_helper_extensions.dart';
 import 'package:chat_app/core/themes/colors.dart';
 import 'package:chat_app/core/common_widgets/section_text.dart';
 import 'package:flutter/material.dart';
@@ -17,10 +18,10 @@ class StatusesBody extends StatelessWidget {
             title: "My Status",
             subtitle: "tap to add status update",
             onTap: () {},
-            subLeading: const Icon(
+            subLeading: Icon(
               Icons.add_circle_outline_rounded,
               color: AppColors.primary,
-              size: 20,
+              size: 20.r,
             ),
           ),
           AppSizes.h10,

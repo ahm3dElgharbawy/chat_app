@@ -13,13 +13,20 @@ import 'package:chat_app/features/profile/presentation/views/profile_screen.dart
 import 'package:chat_app/features/splash/presentation/views/splash_screen.dart';
 import 'package:chat_app/features/layout/presentation/views/main_layout.dart';
 import 'package:chat_app/features/status/presentation/views/statuses_screen.dart';
+import 'package:device_preview/device_preview.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = CustomBlocObserver();
-  runApp(const MyApp());
+  runApp(
+    DevicePreview(
+      enabled: kDebugMode,
+      builder: (context) => const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {

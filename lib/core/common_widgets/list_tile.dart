@@ -1,5 +1,6 @@
 import 'package:chat_app/core/constants/image_strings.dart';
 import 'package:chat_app/core/constants/sizes.dart';
+import 'package:chat_app/core/helpers/responsive_helpers/size_helper_extensions.dart';
 import 'package:chat_app/core/themes/colors.dart';
 import 'package:chat_app/core/themes/styles.dart';
 import 'package:flutter/material.dart';
@@ -27,15 +28,15 @@ class CustomListTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialButton(
       onPressed: () {},
-      padding: const EdgeInsets.all(AppSizes.defaultSpace),
+      padding: EdgeInsets.all(AppSizes.defaultSpace.r),
       child: Row(
         children: [
           Stack(
             children: [
               //? current user avatar
               Container(
-                height: 55,
-                width: 55,
+                height: 55.r,
+                width: 55.r,
                 margin: const EdgeInsetsDirectional.only(end: 5),
                 decoration: BoxDecoration(
                   image: const DecorationImage(
@@ -43,7 +44,7 @@ class CustomListTile extends StatelessWidget {
                   ),
                   shape: BoxShape.circle,
                   border: isImageBordered
-                      ? Border.all(color: AppColors.primary,width: 2)
+                      ? Border.all(color: AppColors.primary, width: 2.w)
                       : null,
                 ),
               ),
@@ -53,11 +54,12 @@ class CustomListTile extends StatelessWidget {
                   right: 0,
                   bottom: 0,
                   child: Container(
-                      decoration: const BoxDecoration(
-                        color: Colors.white,
-                        shape: BoxShape.circle,
-                      ),
-                      child: subLeading),
+                    decoration: const BoxDecoration(
+                      color: Colors.white,
+                      shape: BoxShape.circle,
+                    ),
+                    child: subLeading,
+                  ),
                 ),
             ],
           ),

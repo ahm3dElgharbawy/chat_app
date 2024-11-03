@@ -1,6 +1,7 @@
 import 'package:chat_app/core/common_widgets/buttons/elevated_button.dart';
 import 'package:chat_app/core/constants/image_strings.dart';
 import 'package:chat_app/core/constants/sizes.dart';
+import 'package:chat_app/core/helpers/responsive_helpers/size_helper_extensions.dart';
 import 'package:chat_app/core/themes/styles.dart';
 import 'package:chat_app/features/auth/presentation/views/widgets/already_have_account.dart';
 import 'package:chat_app/features/auth/presentation/views/widgets/register_text_fields.dart';
@@ -28,7 +29,7 @@ class RegisterBody extends StatelessWidget {
               //? Login logo
               Image.asset(
                 ImageStrings.logo,
-                width: 200,
+                width: 200.h,
               ),
       
               //? Login title

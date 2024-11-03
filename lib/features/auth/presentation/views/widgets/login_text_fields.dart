@@ -19,7 +19,7 @@ class LoginTextFields extends StatelessWidget {
           controller: emailController,
           label: "enter your email",
           hint: "your email",
-          prefix: const Icon(Icons.email),
+          prefixIcon: Icons.email,
           keyboardType: TextInputType.emailAddress,
         ),
         AppSizes.h15,

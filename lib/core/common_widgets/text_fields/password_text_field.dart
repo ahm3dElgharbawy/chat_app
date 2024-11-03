@@ -1,4 +1,5 @@
 import 'package:chat_app/core/common_widgets/text_fields/text_field.dart';
+import 'package:chat_app/core/helpers/responsive_helpers/size_helper_extensions.dart';
 import 'package:chat_app/core/helpers/validator.dart';
 import 'package:chat_app/core/themes/colors.dart';
 import 'package:flutter/material.dart';
@@ -30,16 +31,20 @@ class _CustomPasswordTextFieldState extends State<CustomPasswordTextField>
       label: widget.label,
       controller: widget.controller,
       obscureText: isHidden,
-      prefix: const Icon(Icons.lock),
-      suffix: GestureDetector(
-        onTap: () {
-          setState(() {
-            isHidden = !isHidden;
-          });
-        },
-        child: Icon(
-          isHidden ? Icons.visibility_off : Icons.visibility,
-          color: AppColors.darkThree,
+      prefixIcon: Icons.lock,
+      suffix: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 10.w),
+        child: GestureDetector(
+          onTap: () {
+            setState(() {
+              isHidden = !isHidden;
+            });
+          },
+          child: Icon(
+            isHidden ? Icons.visibility_off : Icons.visibility,
+            color: AppColors.darkThree,
+            size: 24.r,
+          ),
         ),
       ),
       validator: (password) {

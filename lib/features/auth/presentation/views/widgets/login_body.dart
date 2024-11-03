@@ -3,6 +3,7 @@ import 'package:chat_app/core/constants/image_strings.dart';
 import 'package:chat_app/core/constants/routes.dart';
 import 'package:chat_app/core/constants/sizes.dart';
 import 'package:chat_app/core/extensions/navigation.dart';
+import 'package:chat_app/core/helpers/responsive_helpers/size_helper_extensions.dart';
 import 'package:chat_app/core/themes/styles.dart';
 import 'package:chat_app/features/auth/presentation/views/widgets/do_not_have_account.dart';
 import 'package:chat_app/features/auth/presentation/views/widgets/login_text_fields.dart';
@@ -19,7 +20,7 @@ class LoginBody extends StatelessWidget {
 
     return Center(
       child: SingleChildScrollView(
-        padding: const EdgeInsets.all(AppSizes.defaultSpace),
+        padding: EdgeInsets.all(AppSizes.defaultSpace.r),
         child: Form(
           key: formKey,
           child: Column(
@@ -28,7 +29,7 @@ class LoginBody extends StatelessWidget {
               //? Login logo
               Image.asset(
                 ImageStrings.logo,
-                width: 200,
+                height: 200.h,
               ),
       
               //? Login title
@@ -41,7 +42,7 @@ class LoginBody extends StatelessWidget {
                 passwordController: passwordController,
               ),
               AppSizes.h30,
-      
+
               //? Login button
               CustomElevatedButton(
                 title: "Log In",

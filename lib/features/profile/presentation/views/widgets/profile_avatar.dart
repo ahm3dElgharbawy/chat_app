@@ -1,4 +1,5 @@
 import 'package:chat_app/core/constants/image_strings.dart';
+import 'package:chat_app/core/helpers/responsive_helpers/size_helper_extensions.dart';
 import 'package:chat_app/core/themes/colors.dart';
 import 'package:flutter/material.dart';
 
@@ -12,9 +13,8 @@ class CustomProfileAvatar extends StatelessWidget {
         children: [
           //? current user avatar
           Container(
-            height: 100,
-            width: 100,
-            margin: const EdgeInsetsDirectional.only(end: 5),
+            height: 100.r,
+            width: 100.r,
             decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage(ImageStrings.user),
@@ -27,15 +27,15 @@ class CustomProfileAvatar extends StatelessWidget {
             right: 0,
             bottom: 0,
             child: Container(
-              padding: const EdgeInsets.all(5),
+              padding: EdgeInsets.all(5.r),
               decoration: const BoxDecoration(
                 color: AppColors.primary,
                 shape: BoxShape.circle,
               ),
-              child: const Icon(
+              child: Icon(
                 Icons.edit,
                 color: Colors.white,
-                size: 20,
+                size: 20.r,
               ),
             ),
           )

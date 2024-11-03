@@ -1,5 +1,6 @@
 import 'package:chat_app/core/common_widgets/buttons/elevated_button.dart';
 import 'package:chat_app/core/constants/sizes.dart';
+import 'package:chat_app/core/helpers/responsive_helpers/size_helper_extensions.dart';
 import 'package:chat_app/features/profile/presentation/views/widgets/profile_avatar.dart';
 import 'package:chat_app/features/profile/presentation/views/widgets/profile_text_fields.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +14,7 @@ class ProfileBody extends StatelessWidget {
     final phoneController = TextEditingController(text: "01028365306");
     final formKey = GlobalKey<FormState>();
     return SingleChildScrollView(
-      padding: const EdgeInsets.all(AppSizes.defaultSpace),
+      padding: EdgeInsets.all(AppSizes.defaultSpace.r),
       child: Form(
         key: formKey,
         child: Column(
@@ -34,7 +35,7 @@ class ProfileBody extends StatelessWidget {
 
             CustomElevatedButton(
               title: "Save Profile",
-              prefix: const Icon(Icons.save,color: Colors.white),
+              prefix: Icon(Icons.save,color: Colors.white,size: 24.r),
               onTap: () {},
             )
           ],

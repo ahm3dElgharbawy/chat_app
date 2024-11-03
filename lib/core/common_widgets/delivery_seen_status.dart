@@ -3,6 +3,7 @@ import 'package:chat_app/core/constants/icon_strings.dart';
 import 'package:chat_app/core/constants/sizes.dart';
 import 'package:chat_app/core/enums/media_type.dart';
 import 'package:chat_app/core/enums/seen_status.dart';
+import 'package:chat_app/core/helpers/responsive_helpers/size_helper_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -26,7 +27,7 @@ class CustomDeliveredSeenStatus extends StatelessWidget {
         if (seenStatus != null)
           SvgPicture.asset(
             getSeenStatusIcon(seenStatus!),
-            width: 20,
+            width: 20.r,
           ),
       ],
     );

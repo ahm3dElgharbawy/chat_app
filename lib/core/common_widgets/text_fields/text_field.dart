@@ -1,3 +1,4 @@
+import 'package:chat_app/core/helpers/responsive_helpers/size_helper_extensions.dart';
 import 'package:chat_app/core/helpers/validator.dart';
 import 'package:chat_app/core/themes/colors.dart';
 import 'package:chat_app/core/themes/styles.dart';
@@ -9,7 +10,7 @@ class CustomTextField extends StatelessWidget with Validator {
     this.hint,
     this.label,
     this.controller,
-    this.prefix,
+    this.prefixIcon,
     this.keyboardType = TextInputType.text,
     this.suffix,
     this.maxLines = 1,
@@ -25,7 +26,7 @@ class CustomTextField extends StatelessWidget with Validator {
   final String? hint;
   final String? label;
   final TextEditingController? controller;
-  final Widget? prefix;
+  final IconData? prefixIcon;
   final Widget? suffix;
   final TextInputType keyboardType;
   final int? maxLines;
@@ -53,27 +54,31 @@ class CustomTextField extends StatelessWidget with Validator {
       obscureText: obscureText,
       style: TextStyles.regular16,
       decoration: InputDecoration(
-        label: label != null ? Text("$label", style: TextStyles.regular14) : null,
+        label:
+            label != null ? Text("$label", style: TextStyles.regular14) : null,
         hintText: hint,
         hintStyle: TextStyles.regular16.copyWith(color: Colors.grey),
-        prefixIcon: prefix,
+        prefixIcon: Padding(
+          padding: prefixIcon == null ? EdgeInsets.zero : EdgeInsets.symmetric(horizontal: 10.w),
+          child: Icon(prefixIcon, size: 24.r),
+        ),
         suffixIcon: suffix,
         filled: true,
         fillColor: Colors.white,
         errorMaxLines: 2,
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(15),
-          borderSide: const BorderSide(color: Color(0xffB9BCB3)),
+          borderRadius: BorderRadius.circular(15.r),
+          borderSide: BorderSide(color: const Color(0xffB9BCB3), width: 1.w),
         ),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(15),
-          borderSide: const BorderSide(color: Color(0xffB9BCB3)),
+          borderRadius: BorderRadius.circular(15.r),
+          borderSide: BorderSide(color: const Color(0xffB9BCB3), width: 1.w),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(5),
-          borderSide: const BorderSide(color: AppColors.primary, width: 2),
+          borderRadius: BorderRadius.circular(5.r),
+          borderSide: BorderSide(color: AppColors.primary, width: 2.w),
         ),
-        contentPadding: const EdgeInsets.all(16),
+        contentPadding: EdgeInsets.all(16.r),
       ),
       validator: validator ??
           (value) {

@@ -1,3 +1,4 @@
+import 'package:chat_app/core/helpers/responsive_helpers/size_helper_extensions.dart';
 import 'package:chat_app/core/themes/colors.dart';
 import 'package:chat_app/core/themes/styles.dart';
 import 'package:flutter/material.dart';
@@ -31,7 +32,7 @@ class CustomElevatedButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: width,
-      height: height ?? 50,
+      height: height ?? 50.h,
       margin: margin,
       child: ElevatedButton(
         onPressed: isLoading ? null : onTap,
@@ -40,13 +41,13 @@ class CustomElevatedButton extends StatelessWidget {
           disabledBackgroundColor: Colors.grey,
           shape: shape ??
               RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(20.r),
               ),
         ),
         child: isLoading
             ? Center(
                 child: SizedBox(
-                  height: 25,
+                  height: 25.h,
                   child: FittedBox(
                     child:
                         CircularProgressIndicator(color: loadingIndicatorColor),
@@ -57,10 +58,10 @@ class CustomElevatedButton extends StatelessWidget {
               // mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                if (prefix != null) Padding(
-                  padding: const EdgeInsetsDirectional.only(end: 10),
+               if (prefix != null) Padding(
+                  padding: EdgeInsetsDirectional.only(end: 10.w),
                   child: prefix!,
-                ),
+                ), 
                 Text(
                   title,
                   style: TextStyles.bold17.copyWith(color: Colors.white),

@@ -1,3 +1,4 @@
+import 'package:chat_app/core/helpers/responsive_helpers/size_helper_extensions.dart';
 import 'package:chat_app/features/layout/presentation/views/widgets/main_appbar.dart';
 import 'package:chat_app/core/themes/colors.dart';
 import 'package:chat_app/core/themes/styles.dart';
@@ -21,10 +22,17 @@ class _MainLayoutState extends State<MainLayout> {
         return Scaffold(
           appBar: const MainAppBar(),
           floatingActionButton: cubit.currentIndex == 0
-              ? FloatingActionButton(
-                  onPressed: () {},
-                  backgroundColor: AppColors.primary,
-                  child: const Icon(Icons.chat),
+              ? SizedBox(
+                  height: 56.r,
+                  width: 56.r,
+                  child: FloatingActionButton(
+                    onPressed: () {},
+                    backgroundColor: AppColors.primary,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15.r),
+                    ),
+                    child: Icon(Icons.chat, size: 24.r),
+                  ),
                 )
               : null,
           body: PageView(
@@ -50,7 +58,7 @@ class _MainLayoutState extends State<MainLayout> {
               items: cubit.navigationItems
                   .map(
                     (item) => BottomNavigationBarItem(
-                      icon: Icon(item['icon']),
+                      icon: Icon(item['icon'], size: 24.r),
                       label: item['label'],
                     ),
                   )

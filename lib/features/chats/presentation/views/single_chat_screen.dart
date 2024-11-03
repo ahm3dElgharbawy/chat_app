@@ -1,5 +1,6 @@
 import 'package:chat_app/core/constants/image_strings.dart';
 import 'package:chat_app/core/constants/sizes.dart';
+import 'package:chat_app/core/helpers/responsive_helpers/size_helper_extensions.dart';
 import 'package:chat_app/features/chats/presentation/views/widgets/chat_app_bar.dart';
 import 'package:chat_app/features/chats/presentation/views/widgets/message_body.dart';
 import 'package:chat_app/features/chats/presentation/views/widgets/send_message_field.dart';
@@ -18,15 +19,15 @@ class SingleChatScreen extends StatelessWidget {
       ),
       backgroundColor: const Color(0xffece6df),
       body: Padding(
-        padding: const EdgeInsets.all(AppSizes.defaultSpace).copyWith(top: 0),
+        padding: EdgeInsets.all(AppSizes.defaultSpace.r).copyWith(top: 0),
         child: Stack(
           fit: StackFit.expand,
           children: [
             // messages
             ListView(
-              padding: const EdgeInsets.only(
-                bottom: 100,
-                top: AppSizes.defaultSpace,
+              padding: EdgeInsets.only(
+                bottom: 100.h,
+                top: AppSizes.defaultSpace.r,
               ),
               children: const [
                 CustomMessageBody(

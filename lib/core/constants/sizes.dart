@@ -17,22 +17,22 @@ class AppSizes {
   // ======================================
   // vertical spaces
   // ======================================
-  static final h5 = SizedBox(height: 5.h);
-  static final h10 = SizedBox(height: 10.h);
-  static final h15 = SizedBox(height: 15.h);
-  static final h20 = SizedBox(height: 20.h);
-  static final h25 = SizedBox(height: 25.h);
-  static final h30 = SizedBox(height: 30.h);
-  static final h40 = SizedBox(height: 40.h);
+  static SizedBox get h5 => SizedBox(height: 5.h);
+  static SizedBox get h10 => SizedBox(height: 10.h);
+  static SizedBox get h15 => SizedBox(height: 15.h);
+  static SizedBox get h20 => SizedBox(height: 20.h);
+  static SizedBox get h25 => SizedBox(height: 25.h);
+  static SizedBox get h30 => SizedBox(height: 30.h);
+  static SizedBox get h40 => SizedBox(height: 40.h);
   // ======================================
   // horizontal spaces
   // ======================================
-  static final w4 = SizedBox(width: 4.w);
-  static final w5 = SizedBox(width: 5.w);
-  static final w6 = SizedBox(width: 6.w);
-  static final w10 = SizedBox(width: 10.w);
-  static final w15 = SizedBox(width: 15.w);
-  static final w20 = SizedBox(width: 20.w);
-  static final w25 = SizedBox(width: 25.w);
-  static final w30 = SizedBox(width: 30.w);
+  static SizedBox get w4 => SizedBox(width: 4.w);
+  static SizedBox get w5 => SizedBox(width: 5.w);
+  static SizedBox get w6 => SizedBox(width: 6.w);
+  static SizedBox get w10 => SizedBox(width: 10.w);
+  static SizedBox get w15 => SizedBox(width: 15.w);
+  static SizedBox get w20 => SizedBox(width: 20.w);
+  static SizedBox get w25 => SizedBox(width: 25.w);
+  static SizedBox get w30 => SizedBox(width: 30.w);
 }

@@ -24,12 +24,12 @@ class CustomMessageBody extends StatelessWidget {
       mainAxisAlignment: isMe ? MainAxisAlignment.start : MainAxisAlignment.end,
       children: [
         Container(
-          padding: const EdgeInsets.all(10),
+          padding: EdgeInsets.all(10.r),
           constraints: BoxConstraints(maxWidth: context.screenWidth * .7),
-          margin: const EdgeInsets.only(bottom: AppSizes.spaceBtwItems),
+          margin: EdgeInsets.only(bottom: AppSizes.spaceBtwItems.h),
           decoration: BoxDecoration(
             color: isMe ? AppColors.primary.withOpacity(.3) : Colors.white,
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(10.r),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
@@ -37,9 +37,11 @@ class CustomMessageBody extends StatelessWidget {
               //? message
               ReadMoreText(
                 message,
+                style: TextStyles.regular14,
                 trimMode: TrimMode.Line,
                 trimLines: 8,
-                moreStyle: TextStyles.semibold14.copyWith(color: AppColors.primary),
+                moreStyle:
+                    TextStyles.semibold14.copyWith(color: AppColors.primary),
                 trimExpandedText: "",
                 trimCollapsedText: "Read more",
               ),
