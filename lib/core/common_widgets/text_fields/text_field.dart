@@ -58,6 +58,7 @@ class CustomTextField extends StatelessWidget with Validator {
             label != null ? Text("$label", style: TextStyles.regular14) : null,
         hintText: hint,
         hintStyle: TextStyles.regular16.copyWith(color: Colors.grey),
+        errorStyle: TextStyles.regular12.copyWith(color:  Theme.of(context).colorScheme.error),
         prefixIcon: Padding(
           padding: prefixIcon == null ? EdgeInsets.zero : EdgeInsets.symmetric(horizontal: 10.w),
           child: Icon(prefixIcon, size: 24.r),
