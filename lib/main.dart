@@ -3,6 +3,7 @@ import 'package:chat_app/core/constants/routes.dart';
 import 'package:chat_app/core/helpers/responsive_helpers/size_helper_extensions.dart';
 import 'package:chat_app/core/helpers/responsive_helpers/size_provider.dart';
 import 'package:chat_app/core/services/custom_bloc_observer.dart';
+import 'package:chat_app/core/services/shared_prefs_singleton.dart';
 import 'package:chat_app/core/themes/colors.dart';
 import 'package:chat_app/features/auth/presentation/views/login_screen.dart';
 import 'package:chat_app/features/auth/presentation/views/register_screen.dart';
@@ -23,6 +24,7 @@ import 'firebase_options.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = CustomBlocObserver();
+  Prefs.init(); // initializing shared preferences singleton
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
