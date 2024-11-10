@@ -51,9 +51,10 @@ class LoginBody extends StatelessWidget {
               BlocConsumer<AuthCubit, AuthState>(
                 listener: (context, state) {
                   if (state is LoginSuccess) {
+                    "user logged in successfully".showAsToast();
                     context.pushReplacementAllNamed(AppRoutes.layout);
                   } else if (state is LoginFailure) {
-                    state.errMessage.showAsToast(Colors.red,ToastGravity.TOP);
+                    state.errMessage.showAsToast(Colors.red);
                   }
                 },
                 builder: (context, state) {

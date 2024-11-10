@@ -6,7 +6,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 extension CustomToast on String {
   void showAsToast([
     Color color = Colors.green,
-    ToastGravity gravity = ToastGravity.BOTTOM,
+    ToastGravity gravity = ToastGravity.TOP,
   ]) {
     Fluttertoast.showToast(
       msg: this,

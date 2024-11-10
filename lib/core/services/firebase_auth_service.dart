@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 class FirebaseAuthService {
   static bool get isLoggedIn => FirebaseAuth.instance.currentUser != null;
+  static Future<void> logout() => FirebaseAuth.instance.signOut();
   Future<void> deleteUser() => FirebaseAuth.instance.currentUser!.delete();
 
   Future<User> createUserWithEmailAndPassword(
