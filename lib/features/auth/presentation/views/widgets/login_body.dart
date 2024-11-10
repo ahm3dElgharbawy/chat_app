@@ -3,11 +3,15 @@ import 'package:chat_app/core/constants/image_strings.dart';
 import 'package:chat_app/core/constants/routes.dart';
 import 'package:chat_app/core/constants/sizes.dart';
 import 'package:chat_app/core/extensions/navigation.dart';
+import 'package:chat_app/core/extensions/toast.dart';
 import 'package:chat_app/core/helpers/responsive_helpers/size_helper_extensions.dart';
 import 'package:chat_app/core/themes/styles.dart';
+import 'package:chat_app/features/auth/presentation/view_models/auth_cubit/auth_cubit.dart';
 import 'package:chat_app/features/auth/presentation/views/widgets/do_not_have_account.dart';
 import 'package:chat_app/features/auth/presentation/views/widgets/login_text_fields.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class LoginBody extends StatelessWidget {
   const LoginBody({super.key});
@@ -31,11 +35,11 @@ class LoginBody extends StatelessWidget {
                 ImageStrings.logo,
                 height: 200.h,
               ),
-      
+
               //? Login title
               Text("Log in to your account", style: TextStyles.bold24),
               AppSizes.h30,
-              
+
               //? Login text fields
               LoginTextFields(
                 emailController: emailController,
@@ -44,15 +48,31 @@ class LoginBody extends StatelessWidget {
               AppSizes.h30,
 
               //? Login button
-              CustomElevatedButton(
-                title: "Log In",
-                onTap: () {
-                  // if(formKey.currentState!.validate()){}
-                  context.pushReplacementAllNamed(AppRoutes.layout);
+              BlocConsumer<AuthCubit, AuthState>(
+                listener: (context, state) {
+                  if (state is LoginSuccess) {
+                    context.pushReplacementAllNamed(AppRoutes.layout);
+                  } else if (state is LoginFailure) {
+                    state.errMessage.showAsToast(Colors.red,ToastGravity.TOP);
+                  }
+                },
+                builder: (context, state) {
+                  return CustomElevatedButton(
+                    title: "Log In",
+                    isLoading: state is LoginLoading,
+                    onTap: () {
+                      if (formKey.currentState!.validate()) {
+                        context.read<AuthCubit>().login(
+                              email: emailController.text,
+                              password: passwordController.text,
+                            );
+                      }
+                    },
+                  );
                 },
               ),
               AppSizes.h30,
-      
+
               //? Don't have account
               const DoNotHaveAccount()
             ],

@@ -15,8 +15,8 @@ import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 abstract class AuthRepo {
-  Future<Either<Failure, User>> registerUser(AppUser userData);
-  Future<Either<Failure, User>> loginUser(String email, String password);
+  Future<Either<Failure, AppUser>> loginUser(String email, String password);
+  Future<Either<Failure, AppUser>> registerUser(AppUser userData);
   Future storeUserDataInFirestore(AppUser user); // add user to firestore
   Future cacheUserData(AppUser user); //
   Future<AppUser> getUserDataFromFirestore(String uid);
@@ -29,20 +29,21 @@ class AuthRepoImpl extends AuthRepo {
       {required this.databaseService, required this.firebaseAuthService});
 
   @override
-  Future<Either<Failure, User>> loginUser(String email, String password) async {
+  Future<Either<Failure, AppUser>> loginUser(
+      String email, String password) async {
     try {
       final authUser = await firebaseAuthService.signInWithEmailAndPassword(
           email: email, password: password);
       final user = await getUserDataFromFirestore(authUser.uid);
       await cacheUserData(user);
-      return right(authUser);
+      return right(user);
     } on CustomException catch (e) {
       return left(ServerFailure(e.message));
     } catch (e) {
       log('Exception in AuthRepoImpl.createUserWithEmailAndPassword: ${e.toString()}');
       return left(
         const ServerFailure(
-          'حدث خطأ ما. الرجاء المحاولة مرة اخرى.',
+          'something went wrong, please try again later',
         ),
       );
     }
@@ -55,17 +56,16 @@ class AuthRepoImpl extends AuthRepo {
   }
 
   @override
-  Future<Either<Failure, User>> registerUser(userData) async {
+  Future<Either<Failure, AppUser>> registerUser(AppUser userData) async {
     User? authUser;
     try {
       authUser = await firebaseAuthService.createUserWithEmailAndPassword(
           userData.email, userData.password);
-      await storeUserDataInFirestore(
-        userData.copyWith(
-          id: authUser.uid,
-        ),
+      final user = userData.copyWith(
+        id: authUser.uid,
       );
-      return right(authUser);
+      await storeUserDataInFirestore(user);
+      return right(user);
     } on CustomException catch (e) {
       deleteUser(authUser);
       return left(ServerFailure(e.message));
@@ -74,7 +74,7 @@ class AuthRepoImpl extends AuthRepo {
       log('Exception in AuthRepoImpl.createUserWithEmailAndPassword: ${e.toString()}');
       return left(
         const ServerFailure(
-          'حدث خطأ ما. الرجاء المحاولة مرة اخرى.',
+          'something went wrong, please try again later',
         ),
       );
     }
@@ -101,5 +101,4 @@ class AuthRepoImpl extends AuthRepo {
   Future cacheUserData(AppUser user) async {
     await Prefs.setString(kAppUser, jsonEncode(user.toJson()));
   }
-
 }
