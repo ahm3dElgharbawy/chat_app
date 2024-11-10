@@ -1,9 +1,13 @@
+import 'dart:developer';
+
 import 'package:chat_app/core/common_widgets/contact_card.dart';
 import 'package:chat_app/core/constants/image_strings.dart';
 import 'package:chat_app/core/constants/routes.dart';
+import 'package:chat_app/core/constants/strings.dart';
 import 'package:chat_app/core/enums/media_type.dart';
 import 'package:chat_app/core/enums/seen_status.dart';
 import 'package:chat_app/core/extensions/navigation.dart';
+import 'package:chat_app/core/services/shared_prefs_singleton.dart';
 import 'package:flutter/material.dart';
 
 class ChatsBody extends StatelessWidget {

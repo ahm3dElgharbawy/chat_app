@@ -1,7 +1,10 @@
+import 'dart:developer';
+
 import 'package:chat_app/core/common_widgets/buttons/icon_button.dart';
 import 'package:chat_app/core/constants/routes.dart';
 import 'package:chat_app/core/extensions/navigation.dart';
 import 'package:chat_app/core/helpers/responsive_helpers/size_helper_extensions.dart';
+import 'package:chat_app/core/services/firebase_auth_service.dart';
 import 'package:chat_app/core/themes/styles.dart';
 import 'package:flutter/material.dart';
 
@@ -23,7 +26,7 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
       {'title': 'Logout', 'target': AppRoutes.login, 'color': Colors.red},
     ];
     return AppBar(
-      toolbarHeight : kToolbarHeight.r,
+      toolbarHeight: kToolbarHeight.r,
       title: Text(title, style: TextStyles.medium24),
       elevation: 1,
       shadowColor: Colors.grey,
@@ -33,7 +36,7 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
       surfaceTintColor: Colors.transparent,
       actions: [
         CustomIconButton(
-          onTap: onTapSearch ?? (){},
+          onTap: onTapSearch ?? () {},
           icon: Icon(
             Icons.search,
             color: Colors.black,
@@ -46,7 +49,6 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
           padding: EdgeInsets.all(8.r),
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.r)),
-            
           itemBuilder: (context) => [
             ...popupMenuItems.map<PopupMenuItem>(
               (item) => PopupMenuItem(
@@ -58,8 +60,14 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
                   style: TextStyles.regular14
                       .copyWith(color: item['color'] ?? Colors.black),
                 ),
-                onTap: () {
-                  context.pushNamed(item['target']);
+                onTap: () async {
+                  if (item['title'] == 'Logout') {
+                    await FirebaseAuthService.logout();
+                    log("success logout");
+                  }
+                  if (context.mounted) {
+                    context.pushNamed(item['target']);
+                  }
                 },
               ),
             ),
