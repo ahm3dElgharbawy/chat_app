@@ -7,10 +7,8 @@ import 'package:chat_app/core/errors/exceptions.dart';
 import 'package:chat_app/core/errors/failures.dart';
 import 'package:chat_app/core/services/database_service.dart';
 import 'package:chat_app/core/services/firebase_auth_service.dart';
-import 'package:chat_app/core/services/firestore_service.dart';
 import 'package:chat_app/core/services/shared_prefs_singleton.dart';
 import 'package:chat_app/features/auth/data/models/app_user.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -33,7 +31,9 @@ class AuthRepoImpl extends AuthRepo {
       String email, String password) async {
     try {
       final authUser = await firebaseAuthService.signInWithEmailAndPassword(
-          email: email, password: password);
+        email: email,
+        password: password,
+      );
       final user = await getUserDataFromFirestore(authUser.uid);
       await cacheUserData(user);
       return right(user);
