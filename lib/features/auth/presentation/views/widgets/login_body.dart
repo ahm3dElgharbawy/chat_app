@@ -11,7 +11,6 @@ import 'package:chat_app/features/auth/presentation/views/widgets/do_not_have_ac
 import 'package:chat_app/features/auth/presentation/views/widgets/login_text_fields.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
 class LoginBody extends StatelessWidget {
   const LoginBody({super.key});

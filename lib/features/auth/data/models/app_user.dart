@@ -1,3 +1,8 @@
+import 'dart:convert';
+
+import 'package:chat_app/core/constants/strings.dart';
+import 'package:chat_app/core/services/shared_prefs_singleton.dart';
+
 class AppUser {
   final String id;
   final String name;
@@ -42,4 +47,9 @@ class AppUser {
         password: password ?? this.password,
         phone: phone ?? this.phone,
       );
+
+  static AppUser getFromCache() {
+    final userAsJson = jsonDecode(Prefs.getString(kAppUser)!);
+    return AppUser.fromJson(userAsJson);
+  }
 }
