@@ -8,7 +8,9 @@ import 'package:chat_app/core/enums/media_type.dart';
 import 'package:chat_app/core/enums/seen_status.dart';
 import 'package:chat_app/core/extensions/navigation.dart';
 import 'package:chat_app/core/extensions/toast.dart';
+import 'package:chat_app/core/helpers/helper_functions.dart';
 import 'package:chat_app/features/chats/presentation/view_models/chats_cubit/chats_cubit.dart';
+import 'package:chat_app/features/chats/presentation/views/single_chat_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
@@ -31,21 +33,25 @@ class ChatsBody extends StatelessWidget {
           return const CustomLoadingWidget();
         }
         return ListView.builder(
-          itemBuilder: (context, i) => CustomContactCard(
-            image: ImageStrings.user,
-            lastMessageType: MediaType.text,
-            seenStatus: SeenStatus.read,
-            unReadCount: 2,
-            time: DateFormat('hh:mm a').format(cubit.chats[i].date),
-            isLastMessageForMe: false,
-            userName: "Rowan",
-            text: cubit.chats[i].lastMessage, // required if last message is text
-            onTap: () {
-              context.pushNamed(AppRoutes.singleChat);
-            },
-          ),
-          // separatorBuilder: (context, i) => AppSizes.h20,
           itemCount: cubit.chats.length,
+          itemBuilder: (context, i) {
+            final chat = cubit.chats[i];
+            return CustomContactCard(
+              image: chat.userData.avatar,
+              lastMessageType: chat.lastMessage.message == null
+                  ? getMediaType(url: chat.lastMessage.file!)
+                  : MediaType.text,
+              seenStatus: SeenStatus.delivered,
+              unReadCount: 0,
+              time: DateFormat('hh:mm a').format(chat.date),
+              isLastMessageForMe: chat.isLastMessageByMe,
+              userName: chat.userData.name,
+              text: chat.lastMessage.message, // required if last message is text
+              onTap: () {
+                context.pushNamed(SingleChatScreen.routeName , {'user' : chat.userData});
+              },
+            );
+          },
         );
       },
     );

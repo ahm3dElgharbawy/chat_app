@@ -1,26 +1,28 @@
+import 'package:chat_app/features/auth/presentation/views/login_screen.dart';
+import 'package:chat_app/features/auth/presentation/views/register_screen.dart';
+import 'package:chat_app/features/calls/presentation/views/calls_screen.dart';
+import 'package:chat_app/features/chats/presentation/views/chats_screen.dart';
+import 'package:chat_app/features/chats/presentation/views/single_chat_screen.dart';
+import 'package:chat_app/features/layout/presentation/views/main_layout.dart';
+import 'package:chat_app/features/profile/presentation/views/profile_screen.dart';
+import 'package:chat_app/features/splash/presentation/views/splash_screen.dart';
+import 'package:chat_app/features/status/presentation/views/statuses_screen.dart';
+import 'package:flutter/material.dart';
+
 class AppRoutes {
   AppRoutes._internal();
-  static const String initial = '/';
-  // splash
-  static const String splash = '/splash';
-  // auth
-  static const String login = '/login';
-  static const String register = '/register';
-  // layout
-  static const String layout = '/layout';
-
-  // chat
-  static const String chats = '/chats';
-  static const String singleChat = '/singleChat';
-  // status
-  static const String statuses = '/statuses';
-  // groups
-  static const String newGroup = '/newGroup';
-  // profile
-  static const String profile = '/profile';
-  // calls
-  static const String calls = '/calls';
-  // settings
-  static const String settings = '/settings';
-
+  static Map<String, Widget Function(BuildContext)> get() => {
+        // =============================================
+        // to navigate to any screen by it's route name
+        // =============================================
+        SplashScreen.routeName: (context) => const SplashScreen(),
+        LoginScreen.routeName: (context) => const LoginScreen(),
+        RegisterScreen.routeName: (context) => const RegisterScreen(),
+        MainLayout.routeName: (context) => const MainLayout(),
+        ChatsScreen.routeName: (context) => const ChatsScreen(),
+        SingleChatScreen.routeName: (context) => const SingleChatScreen(),
+        StatusesScreen.routeName: (context) => const StatusesScreen(),
+        ProfileScreen.routeName: (context) => const ProfileScreen(),
+        CallsScreen.routeName: (context) => const CallsScreen(),
+      };
 }

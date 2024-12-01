@@ -61,22 +61,8 @@ class MyApp extends StatelessWidget {
               primary: AppColors.primary,
             ),
           ),
-          initialRoute: AppRoutes.splash,
-          routes: {
-            // =============================================
-            // to navigate to any screen by it's route name
-            // =============================================
-            AppRoutes.initial: (context) => const LoginScreen(),
-            AppRoutes.splash: (context) => const SplashScreen(),
-            AppRoutes.layout: (context) => const MainLayout(),
-            AppRoutes.login: (context) => const LoginScreen(),
-            AppRoutes.register: (context) => const RegisterScreen(),
-            AppRoutes.chats: (context) => const ChatsScreen(),
-            AppRoutes.singleChat: (context) => const SingleChatScreen(),
-            AppRoutes.statuses: (context) => const StatusesScreen(),
-            AppRoutes.profile: (context) => const ProfileScreen(),
-            AppRoutes.calls: (context) => const CallsScreen(),
-          },
+          initialRoute: SplashScreen.routeName,
+          routes: AppRoutes.get(),
         ),
       ),
     );

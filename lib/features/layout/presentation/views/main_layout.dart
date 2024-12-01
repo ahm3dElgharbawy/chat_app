@@ -8,7 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MainLayout extends StatefulWidget {
   const MainLayout({super.key});
-
+static const routeName = "/mainLayout";
   @override
   State<MainLayout> createState() => _MainLayoutState();
 }

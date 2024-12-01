@@ -9,6 +9,7 @@ import 'package:chat_app/core/themes/styles.dart';
 import 'package:chat_app/features/auth/presentation/view_models/auth_cubit/auth_cubit.dart';
 import 'package:chat_app/features/auth/presentation/views/widgets/do_not_have_account.dart';
 import 'package:chat_app/features/auth/presentation/views/widgets/login_text_fields.dart';
+import 'package:chat_app/features/layout/presentation/views/main_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -51,7 +52,7 @@ class LoginBody extends StatelessWidget {
                 listener: (context, state) {
                   if (state is LoginSuccess) {
                     "user logged in successfully".showAsToast();
-                    context.pushReplacementAllNamed(AppRoutes.layout);
+                    context.pushReplacementAllNamed(MainLayout.routeName);
                   } else if (state is LoginFailure) {
                     state.errMessage.showAsToast(Colors.red);
                   }

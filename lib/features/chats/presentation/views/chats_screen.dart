@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 
 class ChatsScreen extends StatelessWidget {
   const ChatsScreen({super.key});
-
+static const routeName = "/chats";
   @override
   Widget build(BuildContext context) {
     log(AppUser.getFromCache().toJson().toString());

@@ -2,6 +2,7 @@ import 'package:chat_app/core/constants/routes.dart';
 import 'package:chat_app/core/extensions/navigation.dart';
 import 'package:chat_app/core/themes/colors.dart';
 import 'package:chat_app/core/themes/styles.dart';
+import 'package:chat_app/features/auth/presentation/views/register_screen.dart';
 import 'package:flutter/material.dart';
 
 class DoNotHaveAccount extends StatelessWidget {
@@ -15,7 +16,7 @@ class DoNotHaveAccount extends StatelessWidget {
         Text("Don’t have an account?", style: TextStyles.bold14),
         TextButton(
           onPressed: () {
-            context.pushReplacementNamed(AppRoutes.register);
+            context.pushReplacementNamed(RegisterScreen.routeName);
           },
           child: Text(
             "Register here",

@@ -8,6 +8,7 @@ import 'package:chat_app/core/helpers/responsive_helpers/size_helper_extensions.
 import 'package:chat_app/core/themes/styles.dart';
 import 'package:chat_app/features/auth/data/models/app_user.dart';
 import 'package:chat_app/features/auth/presentation/view_models/auth_cubit/auth_cubit.dart';
+import 'package:chat_app/features/auth/presentation/views/login_screen.dart';
 import 'package:chat_app/features/auth/presentation/views/widgets/already_have_account.dart';
 import 'package:chat_app/features/auth/presentation/views/widgets/register_text_fields.dart';
 import 'package:flutter/material.dart';
@@ -56,7 +57,7 @@ class RegisterBody extends StatelessWidget {
                 listener: (context, state) {
                   if (state is RegisterSuccess) {
                     "account created successfully".showAsToast();
-                    context.pushReplacementNamed(AppRoutes.login);
+                    context.pushReplacementNamed(LoginScreen.routeName);
                   } else if (state is RegisterFailure) {
                     state.errMessage.showAsToast(Colors.red);
                   }

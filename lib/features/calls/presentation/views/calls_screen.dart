@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class CallsScreen extends StatelessWidget {
   const CallsScreen({super.key});
-
+static const routeName = "/calls";
   @override
   Widget build(BuildContext context) {
     return const CallsBody();

@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 
 class SingleChatScreen extends StatelessWidget {
   const SingleChatScreen({super.key});
-
+static const routeName = "/singleChat";
   @override
   Widget build(BuildContext context) {
     final messageController = TextEditingController();

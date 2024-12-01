@@ -4,4 +4,5 @@ enum MediaType {
   photo,
   audio,
   text,
+  other
 }
