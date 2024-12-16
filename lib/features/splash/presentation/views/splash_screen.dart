@@ -1,5 +1,4 @@
 import 'package:chat_app/core/constants/image_strings.dart';
-import 'package:chat_app/core/constants/routes.dart';
 import 'package:chat_app/core/extensions/navigation.dart';
 import 'package:chat_app/core/helpers/responsive_helpers/size_helper_extensions.dart';
 import 'package:chat_app/core/services/firebase_auth_service.dart';

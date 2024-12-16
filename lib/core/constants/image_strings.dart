@@ -5,4 +5,7 @@ class ImageStrings {
   static const user = "assets/images/user.png";
   static const empty = "assets/images/empty.png";
   static const logo = "assets/images/logo.png";
+  static const video = "assets/images/video.png";
+  static const audio = "assets/images/audio.png";
+  static const image = "assets/images/image.png";
 }

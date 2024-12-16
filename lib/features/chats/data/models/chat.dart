@@ -1,7 +1,6 @@
 import 'package:chat_app/features/auth/data/models/app_user.dart';
 import 'package:chat_app/features/chats/data/models/message.dart';
 import 'package:chat_app/features/chats/data/models/sender.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ChatModel {
   final String id;
@@ -21,9 +20,9 @@ class ChatModel {
   factory ChatModel.fromJson(Map<String, dynamic> json) {
     return ChatModel(
       id: json['id'],
-      lastMessage: MessageModel.fromJson(json['last_message']),
+      lastMessage: MessageModel.fromJson(json['last_message'], AppUser.getFromCache().id),
       isLastMessageByMe: json['last_sender_id'] == AppUser.getFromCache().id,
-      date: json['created_at'] as DateTime,
+      date: json['created_at'].toDate(),
       userData: json['user']
     );
   }

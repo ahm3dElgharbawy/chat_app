@@ -1,4 +1,5 @@
 import 'package:chat_app/core/helpers/responsive_helpers/size_helper_extensions.dart';
+import 'package:chat_app/features/chats/presentation/view_models/chats_cubit/chats_cubit.dart';
 import 'package:chat_app/features/layout/presentation/views/widgets/main_appbar.dart';
 import 'package:chat_app/core/themes/colors.dart';
 import 'package:chat_app/core/themes/styles.dart';
@@ -14,6 +15,11 @@ static const routeName = "/mainLayout";
 }
 
 class _MainLayoutState extends State<MainLayout> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<ChatsCubit>().fetchChats();
+  }
   @override
   Widget build(BuildContext context) {
     final cubit = LayoutCubit.get(context);

@@ -1,4 +1,3 @@
-import 'package:chat_app/core/constants/routes.dart';
 import 'package:chat_app/core/extensions/navigation.dart';
 import 'package:chat_app/core/themes/colors.dart';
 import 'package:chat_app/core/themes/styles.dart';

@@ -21,6 +21,6 @@ class AppBlocProviders {
             ),
           ),
         ),
-        BlocProvider(create: (context) => ChatsCubit(ChatRepoImpl(databaseService: databaseService))..fetchChats()),
+        BlocProvider(create: (context) => ChatsCubit(ChatRepoImpl(databaseService: databaseService))),
       ];
 }

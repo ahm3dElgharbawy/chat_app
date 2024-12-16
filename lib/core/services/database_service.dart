@@ -1,3 +1,5 @@
+import 'dart:io';
+
 abstract class DatabaseService {
   Future<void> addData(
       {required String path,
@@ -11,4 +13,5 @@ abstract class DatabaseService {
 
   Future<bool> checkIfDataExists(
       {required String path, required String documentId});
+  Future<String> uploadFile(File file, {String path = "images", String? name});
 }

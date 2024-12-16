@@ -9,7 +9,7 @@ class CustomIconButton extends StatelessWidget {
     this.backgroundColor, this.contentPadding,
   });
   final Widget icon;
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
   final Color? backgroundColor;
   final EdgeInsetsGeometry? contentPadding;
 

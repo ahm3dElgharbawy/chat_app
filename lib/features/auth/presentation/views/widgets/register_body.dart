@@ -1,6 +1,5 @@
 import 'package:chat_app/core/common_widgets/buttons/elevated_button.dart';
 import 'package:chat_app/core/constants/image_strings.dart';
-import 'package:chat_app/core/constants/routes.dart';
 import 'package:chat_app/core/constants/sizes.dart';
 import 'package:chat_app/core/extensions/navigation.dart';
 import 'package:chat_app/core/extensions/toast.dart';

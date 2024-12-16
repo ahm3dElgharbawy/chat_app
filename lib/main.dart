@@ -5,20 +5,13 @@ import 'package:chat_app/core/helpers/responsive_helpers/size_provider.dart';
 import 'package:chat_app/core/services/custom_bloc_observer.dart';
 import 'package:chat_app/core/services/shared_prefs_singleton.dart';
 import 'package:chat_app/core/themes/colors.dart';
-import 'package:chat_app/features/auth/presentation/views/login_screen.dart';
-import 'package:chat_app/features/auth/presentation/views/register_screen.dart';
-import 'package:chat_app/features/calls/presentation/views/calls_screen.dart';
-import 'package:chat_app/features/chats/presentation/views/chats_screen.dart';
-import 'package:chat_app/features/chats/presentation/views/single_chat_screen.dart';
-import 'package:chat_app/features/profile/presentation/views/profile_screen.dart';
 import 'package:chat_app/features/splash/presentation/views/splash_screen.dart';
-import 'package:chat_app/features/layout/presentation/views/main_layout.dart';
-import 'package:chat_app/features/status/presentation/views/statuses_screen.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -27,6 +20,11 @@ void main() async {
   Prefs.init(); // initializing shared preferences singleton
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
+  );
+  Supabase.initialize(
+    url: 'https://kghwlrstkekzfjuqiuke.supabase.co',
+    anonKey:
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtnaHdscnN0a2VremZqdXFpdWtlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzMxNjMyMzAsImV4cCI6MjA0ODczOTIzMH0.MdQFNeEN2C6-gKda_FLenFYsHPomOM1t6Wtn2CcKVh4',
   );
   runApp(
     DevicePreview(

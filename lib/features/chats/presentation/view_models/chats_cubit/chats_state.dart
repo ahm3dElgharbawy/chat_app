@@ -23,3 +23,13 @@ final class GetChatMessagesFailure extends ChatsState {
   final String message;
   GetChatMessagesFailure({required this.message});
 }
+
+// send message
+final class SendChatMessageLoading extends ChatsState {}
+
+final class SendChatMessageSuccess extends ChatsState {}
+
+final class SendChatMessageFailure extends ChatsState {
+  final String message;
+  SendChatMessageFailure({required this.message});
+}

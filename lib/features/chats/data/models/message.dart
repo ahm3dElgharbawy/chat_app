@@ -2,30 +2,23 @@ class MessageModel {
   final String id;
   final String? message;
   final String? file;
-  final String senderId;
+  final bool isMe;
   final DateTime createdAt;
 
   MessageModel({
     required this.id,
     required this.message,
     required this.file,
-    required this.senderId,
+    required this.isMe,
     required this.createdAt,
   });
 
-  factory MessageModel.fromJson(Map<String, dynamic> json) => MessageModel(
+  factory MessageModel.fromJson(Map<String, dynamic> json, String myId) =>
+      MessageModel(
         id: json["id"],
         message: json["message"],
         file: json["file"],
-        senderId: json['sender_id'],
+        isMe: json['sender_id'] == myId ? true : false,
         createdAt: json["created_at"].toDate(),
       );
-
-  Map<String, dynamic> toJson() => {
-        "id": id,
-        "message": message,
-        "file": file,
-        "sender_id" : senderId,
-        "created_at": createdAt,
-      };
 }
