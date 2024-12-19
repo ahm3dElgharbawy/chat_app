@@ -1,6 +1,5 @@
 import 'package:chat_app/core/common_widgets/buttons/elevated_button.dart';
 import 'package:chat_app/core/constants/image_strings.dart';
-import 'package:chat_app/core/constants/routes.dart';
 import 'package:chat_app/core/constants/sizes.dart';
 import 'package:chat_app/core/extensions/navigation.dart';
 import 'package:chat_app/core/extensions/toast.dart';
@@ -8,10 +7,9 @@ import 'package:chat_app/core/helpers/responsive_helpers/size_helper_extensions.
 import 'package:chat_app/core/themes/styles.dart';
 import 'package:chat_app/features/auth/data/models/app_user.dart';
 import 'package:chat_app/features/auth/presentation/view_models/auth_cubit/auth_cubit.dart';
+import 'package:chat_app/features/auth/presentation/views/login_screen.dart';
 import 'package:chat_app/features/auth/presentation/views/widgets/already_have_account.dart';
-import 'package:chat_app/features/auth/presentation/views/widgets/register_button.dart';
 import 'package:chat_app/features/auth/presentation/views/widgets/register_text_fields.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -58,7 +56,7 @@ class RegisterBody extends StatelessWidget {
                 listener: (context, state) {
                   if (state is RegisterSuccess) {
                     "account created successfully".showAsToast();
-                    context.pushReplacementNamed(AppRoutes.login);
+                    context.pushReplacementNamed(LoginScreen.routeName);
                   } else if (state is RegisterFailure) {
                     state.errMessage.showAsToast(Colors.red);
                   }

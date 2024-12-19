@@ -23,3 +23,7 @@ extension CustomNavigation on BuildContext {
     Navigator.of(this).pushNamedAndRemoveUntil(routeName, (route) => false);
   }
 }
+
+extension RouteArgs on BuildContext {
+  T? args<T>() => ModalRoute.of(this)!.settings.arguments as T?;
+}

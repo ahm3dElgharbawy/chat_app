@@ -1,7 +1,7 @@
-import 'package:chat_app/core/constants/routes.dart';
 import 'package:chat_app/core/extensions/navigation.dart';
 import 'package:chat_app/core/themes/colors.dart';
 import 'package:chat_app/core/themes/styles.dart';
+import 'package:chat_app/features/auth/presentation/views/login_screen.dart';
 import 'package:flutter/material.dart';
 
 class AlreadyHaveAnAccount extends StatelessWidget {
@@ -15,7 +15,7 @@ class AlreadyHaveAnAccount extends StatelessWidget {
         Text("Already have an account?", style: TextStyles.bold14),
         TextButton(
           onPressed: () {
-            context.pushReplacementNamed(AppRoutes.login);
+            context.pushReplacementNamed(LoginScreen.routeName);
           },
           child: Text(
             "Login here",

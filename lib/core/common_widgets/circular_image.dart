@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class CustomCircularImage extends StatelessWidget {
@@ -5,10 +6,11 @@ class CustomCircularImage extends StatelessWidget {
     super.key,
     this.size = 50,
     required this.image,
+    this.isNetwork = true
   });
   final double size;
   final String image;
-
+  final bool isNetwork;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -19,7 +21,7 @@ class CustomCircularImage extends StatelessWidget {
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         image: DecorationImage(
-          image: AssetImage(image),
+          image:isNetwork? CachedNetworkImageProvider(image): AssetImage(image),
         ),
       ),
     );

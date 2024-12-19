@@ -1,6 +1,5 @@
 import 'package:chat_app/features/auth/data/models/app_user.dart';
 import 'package:chat_app/features/auth/data/repos/auth_repo.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'auth_state.dart';
