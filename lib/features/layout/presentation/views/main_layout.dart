@@ -1,5 +1,7 @@
+import 'package:chat_app/core/extensions/navigation.dart';
 import 'package:chat_app/core/helpers/responsive_helpers/size_helper_extensions.dart';
 import 'package:chat_app/features/chats/presentation/view_models/chats_cubit/chats_cubit.dart';
+import 'package:chat_app/features/chats/presentation/views/contacts_screen.dart';
 import 'package:chat_app/features/layout/presentation/views/widgets/main_appbar.dart';
 import 'package:chat_app/core/themes/colors.dart';
 import 'package:chat_app/core/themes/styles.dart';
@@ -32,7 +34,9 @@ class _MainLayoutState extends State<MainLayout> {
                   height: 56.r,
                   width: 56.r,
                   child: FloatingActionButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      context.pushNamed(ContactsScreen.routeName);
+                    },
                     backgroundColor: AppColors.primary,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15.r),

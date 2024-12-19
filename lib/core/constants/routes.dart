@@ -2,6 +2,7 @@ import 'package:chat_app/features/auth/presentation/views/login_screen.dart';
 import 'package:chat_app/features/auth/presentation/views/register_screen.dart';
 import 'package:chat_app/features/calls/presentation/views/calls_screen.dart';
 import 'package:chat_app/features/chats/presentation/views/chats_screen.dart';
+import 'package:chat_app/features/chats/presentation/views/contacts_screen.dart';
 import 'package:chat_app/features/chats/presentation/views/single_chat_screen.dart';
 import 'package:chat_app/features/layout/presentation/views/main_layout.dart';
 import 'package:chat_app/features/profile/presentation/views/profile_screen.dart';
@@ -24,5 +25,6 @@ class AppRoutes {
         StatusesScreen.routeName: (context) => const StatusesScreen(),
         ProfileScreen.routeName: (context) => const ProfileScreen(),
         CallsScreen.routeName: (context) => const CallsScreen(),
+        ContactsScreen.routeName: (context) => const ContactsScreen(),
       };
 }

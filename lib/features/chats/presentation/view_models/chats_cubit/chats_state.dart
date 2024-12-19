@@ -33,3 +33,13 @@ final class SendChatMessageFailure extends ChatsState {
   final String message;
   SendChatMessageFailure({required this.message});
 }
+
+// fetch contacts
+final class GetContactsLoading extends ChatsState {}
+
+final class GetContactsSuccess extends ChatsState {}
+
+final class GetContactsFailure extends ChatsState {
+  final String message;
+  GetContactsFailure({required this.message});
+}
