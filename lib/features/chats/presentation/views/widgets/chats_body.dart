@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'dart:ffi';
 
 import 'package:chat_app/core/common_widgets/contact_card.dart';
 import 'package:chat_app/core/common_widgets/loading_widget.dart';
@@ -30,23 +31,26 @@ class ChatsBody extends StatelessWidget {
         if (state is GetChatsLoading) {
           return const CustomLoadingWidget();
         }
+        final allChats = cubit.chats + cubit.groupChats;
         return ListView.builder(
-          itemCount: cubit.chats.length,
+          itemCount: allChats.length,
           itemBuilder: (context, i) {
-            final chat = cubit.chats[i];
+            final chat = allChats[i];
             return CustomContactCard(
-              image: chat.userData.avatar,
-              lastMessageType: chat.lastMessage.message == null
-                  ? getMediaType(url: chat.lastMessage.file!)
-                  : MediaType.text,
+              image: chat.chatHeader.avatar,
+              lastMessageType:
+                  chat.lastMessage != null && chat.lastMessage!.file != null
+                      ? getMediaType(url: chat.lastMessage!.file!)
+                      : MediaType.text,
               seenStatus: SeenStatus.delivered,
               unReadCount: 0,
               time: DateFormat('hh:mm a').format(chat.date),
               isLastMessageForMe: chat.isLastMessageByMe,
-              userName: chat.userData.name,
-              text: chat.lastMessage.message, // required if last message is text
+              userName: chat.chatHeader.name,
+              text: chat.lastMessage?.message ??
+                  "", // required if last message is text
               onTap: () {
-                context.pushNamed(SingleChatScreen.routeName , {'user' : chat.userData});
+                context.pushNamed(SingleChatScreen.routeName, chat.chatHeader);
               },
             );
           },

@@ -13,8 +13,8 @@ class UserContactCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       onTap: (){
-        final userData = UserData(id: user.id, name: user.name, email: user.email, phone: user.phone);
-        context.pushNamed(SingleChatScreen.routeName,{'user': userData});
+        final userData = ChatHeader(id: user.id, name: user.name, email: user.email, phone: user.phone);
+        context.pushNamed(SingleChatScreen.routeName,userData);
       },
       title: Text(user.name,style: TextStyles.semibold14), // here user name
       subtitle: Text(user.phone,style: TextStyles.regular12), // here user name

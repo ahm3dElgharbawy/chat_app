@@ -4,17 +4,17 @@ import 'package:chat_app/features/chats/data/models/sender.dart';
 
 class ChatModel {
   final String id;
-  final MessageModel lastMessage;
+  final MessageModel? lastMessage;
   final bool isLastMessageByMe;
   final DateTime date;
-  final UserData userData;
+  final ChatHeader chatHeader;
 
   ChatModel({
     required this.id,
     required this.lastMessage,
     required this.isLastMessageByMe,
     required this.date,
-    required this.userData
+    required this.chatHeader
   });
 
   factory ChatModel.fromJson(Map<String, dynamic> json) {
@@ -23,7 +23,7 @@ class ChatModel {
       lastMessage: MessageModel.fromJson(json['last_message'], AppUser.getFromCache().id),
       isLastMessageByMe: json['last_sender_id'] == AppUser.getFromCache().id,
       date: json['created_at'].toDate(),
-      userData: json['user']
+      chatHeader: json['chat_header']
     );
   }
 }

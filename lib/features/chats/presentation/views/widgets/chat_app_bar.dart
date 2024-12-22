@@ -8,9 +8,14 @@ import 'package:flutter/material.dart';
 
 class CustomChatAppbar extends StatelessWidget implements PreferredSizeWidget {
   const CustomChatAppbar(
-      {super.key, required this.username, required this.image});
+      {super.key,
+      required this.username,
+      required this.image,
+      required this.onTapTitle, required this.id,});
+   final String id;
   final String username;
   final String image;
+  final VoidCallback onTapTitle;
   @override
   Widget build(BuildContext context) {
     return AppBar(
@@ -22,16 +27,23 @@ class CustomChatAppbar extends StatelessWidget implements PreferredSizeWidget {
       leadingWidth: 50.w,
       title: Row(
         children: [
-          CustomCircularImage(
-            image: image,
-            size: 40.r,
+          Hero(
+            tag: id,
+            child: CustomCircularImage(
+              image: image,
+              size: 40.r,
+            ),
           ),
           AppSizes.w10,
           Expanded(
-            child: Text(
-              username,
-              style: TextStyles.medium17,
-              overflow: TextOverflow.ellipsis,
+            child: ListTile(
+              onTap: onTapTitle,
+              contentPadding: EdgeInsets.zero,
+              title: Text(
+                username,
+                style: TextStyles.medium17,
+                overflow: TextOverflow.ellipsis,
+              ),
             ),
           )
         ],

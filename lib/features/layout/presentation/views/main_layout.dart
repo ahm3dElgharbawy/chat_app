@@ -29,6 +29,7 @@ class _MainLayoutState extends State<MainLayout> {
   void initState() {
     super.initState();
     context.read<ChatsCubit>().fetchChats();
+    context.read<ChatsCubit>().fetchGroupChats();
   }
 
   @override
@@ -42,22 +43,23 @@ class _MainLayoutState extends State<MainLayout> {
               await showSearch(
                 context: context,
                 delegate: CustomSearchDelegate<ChatModel>(
-                  itemToString: (chat) => chat.userData.name,
+                  itemToString: (chat) => chat.chatHeader.name,
                   buildListItem: (chat) => CustomContactCard(
-                    image: chat.userData.avatar,
-                    lastMessageType: chat.lastMessage.message == null
-                        ? getMediaType(url: chat.lastMessage.file!)
+                    image: chat.chatHeader.avatar,
+                    lastMessageType: chat.lastMessage != null &&
+                            chat.lastMessage!.file != null
+                        ? getMediaType(url: chat.lastMessage!.file!)
                         : MediaType.text,
                     seenStatus: SeenStatus.delivered,
                     unReadCount: 0,
                     time: DateFormat('hh:mm a').format(chat.date),
                     isLastMessageForMe: chat.isLastMessageByMe,
-                    userName: chat.userData.name,
-                    text: chat.lastMessage
-                        .message, // required if last message is text
+                    userName: chat.chatHeader.name,
+                    text: chat.lastMessage?.message ??
+                        "", // required if last message is text
                     onTap: () {
                       context.pushNamed(
-                          SingleChatScreen.routeName, {'user': chat.userData});
+                          SingleChatScreen.routeName, chat.chatHeader);
                     },
                   ),
                   searchList: context.read<ChatsCubit>().chats,

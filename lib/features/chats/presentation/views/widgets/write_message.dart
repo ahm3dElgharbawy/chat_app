@@ -16,7 +16,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 
 class WriteMessageSection extends StatefulWidget {
-  const WriteMessageSection({super.key});
+  const WriteMessageSection({super.key, required this.isGroup});
+  final bool isGroup;
 
   @override
   State<WriteMessageSection> createState() => _WriteMessageSectionState();
@@ -112,16 +113,18 @@ class _WriteMessageSectionState extends State<WriteMessageSection> {
   }
 
   void sendMessage() {
-    context.read<ChatsCubit>().sendMessage(
-      context.args()['user'].id,
-      {
-        "message": messageController.text.trim().isEmpty
-            ? null
-            : messageController.text,
-        "file": file,
-        "sender_id": AppUser.getFromCache().id,
-        "created_at": Timestamp.now()
-      },
-    );
+    final cubit = context.read<ChatsCubit>();
+    final message = {
+      "message":
+          messageController.text.trim().isEmpty ? null : messageController.text,
+      "file": file,
+      "sender_id": AppUser.getFromCache().id,
+      "created_at": Timestamp.now()
+    };
+    if (widget.isGroup) {
+      cubit.sendGroupMessage(context.args().id, message);
+    } else {
+      cubit.sendMessage(context.args().id, message);
+    }
   }
 }

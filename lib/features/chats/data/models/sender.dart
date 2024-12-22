@@ -1,21 +1,25 @@
 import 'package:chat_app/core/constants/image_strings.dart';
 
-class UserData {
+class ChatHeader {
   final String id;
   final String name;
-  final String email;
-  final String phone;
+  final String? email;
+  final String? phone;
   final String avatar;
+  final List<String>? members;
+  final bool isGroup;
 
-  UserData({
+  ChatHeader({
     required this.id,
     required this.name,
-    required this.email,
-    required this.phone,
+    this.email,
+    this.phone,
+    this.isGroup = false,
+    this.members,
     this.avatar = ImageStrings.userNetworkImage,
   });
 
-  factory UserData.fromJson(Map<String, dynamic> json) => UserData(
+  factory ChatHeader.fromJson(Map<String, dynamic> json) => ChatHeader(
         id: json["id"],
         name: json["name"],
         email: json["email"],

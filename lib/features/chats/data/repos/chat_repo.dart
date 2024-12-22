@@ -14,11 +14,16 @@ import 'package:dartz/dartz.dart';
 
 abstract class ChatRepo {
   Future<Either<Failure, Stream<Future<List<ChatModel>>>>> getChats();
+  Future<Either<Failure, Stream<Future<List<ChatModel>>>>> getGroupsChats();
   Future<Either<Failure, List<AppUser>>> getContacts();
   Future<Either<Failure, Stream<List<MessageModel>>>> getChatMessages(
       {required String receiverId});
+  Future<Either<Failure, Stream<List<MessageModel>>>> getGroupMessages(
+      {required String groupId});
   Future<Either<Failure, void>> sendMessage(
       String receiverId, Map<String, dynamic> message, bool isFirst);
+  Future<Either<Failure, void>> sendGroupMessage(
+      String groupId, Map<String, dynamic> message);
 }
 
 class ChatRepoImpl extends ChatRepo {
@@ -49,7 +54,7 @@ class ChatRepoImpl extends ChatRepo {
               lastMessage: MessageModel.fromJson(lastMessage, currentUser.id),
               isLastMessageByMe: lastMessage['sender_id'] == currentUser.id,
               date: lastMessage['created_at'].toDate(),
-              userData: UserData.fromJson(userData),
+              chatHeader: ChatHeader.fromJson(userData),
             ),
           );
         }
@@ -69,6 +74,57 @@ class ChatRepoImpl extends ChatRepo {
     }
   }
 
+  @override
+  Future<Either<Failure, Stream<Future<List<ChatModel>>>>>
+      getGroupsChats() async {
+    try {
+      List<ChatModel> chats = [];
+      final chatsCollection =
+          FirebaseFirestore.instance.collection(EndPoints.groupsCollection);
+
+      final chatsStream = chatsCollection
+          .where('members', arrayContains: currentUser.id)
+          .snapshots()
+          .map((snapshot) async {
+        chats.clear();
+        for (var chatDocument in snapshot.docs) {
+          // get last message in the chat
+          final lastMessage =
+              await getLastMessage(chatsCollection, chatDocument.id);
+              log(chatDocument.data()['members'].toString());
+          chats.add(
+            ChatModel(
+              id: chatDocument.id,
+              lastMessage:lastMessage.isEmpty ? null : MessageModel.fromJson(lastMessage, currentUser.id),
+              isLastMessageByMe: lastMessage['sender_id'] == currentUser.id,
+              date: lastMessage['created_at']?.toDate() ??
+                  chatDocument.data()['created_at'].toDate(),
+              chatHeader: ChatHeader(
+                id: chatDocument.id,
+                name: chatDocument.data()['name'],
+                isGroup: true,
+                members: List<String>.from(chatDocument.data()['members']),
+                avatar: chatDocument.data()['avatar'],
+              ),
+            ),
+          );
+        }
+        return chats;
+      });
+
+      return right(chatsStream);
+    } on CustomException catch (e) {
+      return left(ServerFailure(e.message));
+    } catch (e) {
+      log('Exception in $runtimeType.getGroupsChats: ${e.toString()}');
+      return left(
+        const ServerFailure(
+          'something went wrong, please try again later',
+        ),
+      );
+    }
+  }
+
   Future<Map<String, dynamic>> getLastMessage(
       CollectionReference chatsCollection, String docId) async {
     final lastMessage = await chatsCollection
@@ -77,7 +133,7 @@ class ChatRepoImpl extends ChatRepo {
         .orderBy('created_at', descending: true)
         .limit(1)
         .get();
-    return lastMessage.docs.first.data();
+    return lastMessage.docs.isNotEmpty ? lastMessage.docs.first.data() : {};
   }
 
   @override
@@ -98,6 +154,34 @@ class ChatRepoImpl extends ChatRepo {
                 .toList(),
           ),
     );
+  }
+
+  @override
+  Future<Either<Failure, Stream<List<MessageModel>>>> getGroupMessages(
+      {required String groupId}) async {
+    return right(
+      FirebaseFirestore.instance
+          .collection(EndPoints.groupsCollection)
+          .doc(groupId)
+          .collection(EndPoints.messagesCollection)
+          .orderBy('created_at')
+          .snapshots()
+          .map(
+            (snapshot) => snapshot.docs
+                .map((doc) => MessageModel.fromJson(doc.data(), currentUser.id))
+                .toList(),
+          ),
+    );
+  }
+
+  DocumentReference getMessageReference(String senderId, String receiverId) {
+    return FirebaseFirestore.instance
+        .collection(EndPoints.usersCollection)
+        .doc(senderId)
+        .collection(EndPoints.chatsCollection)
+        .doc(receiverId)
+        .collection(EndPoints.messagesCollection)
+        .doc();
   }
 
   @override
@@ -123,7 +207,7 @@ class ChatRepoImpl extends ChatRepo {
       }
       return right(unit);
     } catch (e) {
-      log('Exception in $runtimeType.getChats: ${e.toString()}');
+      log('Exception in $runtimeType.sendMessage: ${e.toString()}');
       return left(
         const ServerFailure(
           'something went wrong, please try again later',
@@ -132,14 +216,32 @@ class ChatRepoImpl extends ChatRepo {
     }
   }
 
-  DocumentReference getMessageReference(String senderId, String receiverId) {
-    return FirebaseFirestore.instance
-        .collection(EndPoints.usersCollection)
-        .doc(senderId)
-        .collection(EndPoints.chatsCollection)
-        .doc(receiverId)
-        .collection(EndPoints.messagesCollection)
-        .doc();
+  @override
+  Future<Either<Failure, void>> sendGroupMessage(
+      String groupId, Map<String, dynamic> message) async {
+    try {
+      // upload the file if it's provided
+      if (message['file'] != null) {
+        message['file'] =
+            await databaseService.uploadFile(message['file'] as File);
+      }
+      final docRefMe = FirebaseFirestore.instance
+          .collection(EndPoints.groupsCollection)
+          .doc(groupId)
+          .collection(EndPoints.messagesCollection)
+          .doc();
+      message['id'] = docRefMe.id;
+      docRefMe.set(message);
+
+      return right(unit);
+    } catch (e) {
+      log('Exception in $runtimeType.sendGroupMessage: ${e.toString()}');
+      return left(
+        const ServerFailure(
+          'something went wrong, please try again later',
+        ),
+      );
+    }
   }
 
   @override

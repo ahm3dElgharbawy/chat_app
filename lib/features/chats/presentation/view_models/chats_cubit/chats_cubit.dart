@@ -16,14 +16,32 @@ class ChatsCubit extends Cubit<ChatsState> {
 
   void fetchChats() async {
     emit(GetChatsLoading());
-    chatsStreamSubscription?.cancel(); // cancel old stream to prevent stream collision
+    chatsStreamSubscription
+        ?.cancel(); // cancel old stream to prevent stream collision
     final result = await chatRepo.getChats();
     result.fold(
       (failure) => emit(GetChatsFailure(message: failure.message)),
       (chatsStream) {
         chatsStreamSubscription = chatsStream.listen((event) async {
           chats = await event;
-          print(chats);
+          emit(GetChatsSuccess());
+        });
+      },
+    );
+  }
+
+  List<ChatModel> groupChats = [];
+  StreamSubscription? groupChatsStreamSubscription;
+  void fetchGroupChats() async {
+    emit(GetChatsLoading());
+    groupChatsStreamSubscription
+        ?.cancel(); // cancel old stream to prevent stream collision
+    final result = await chatRepo.getGroupsChats();
+    result.fold(
+      (failure) => emit(GetChatsFailure(message: failure.message)),
+      (chatsStream) {
+        groupChatsStreamSubscription = chatsStream.listen((event) async {
+          groupChats = await event;
           emit(GetChatsSuccess());
         });
       },
@@ -51,10 +69,38 @@ class ChatsCubit extends Cubit<ChatsState> {
     );
   }
 
+  void getGroupMessages(String groupId) async {
+    emit(GetChatMessagesLoading());
+    messagesStreamSubscription?.cancel();
+    final result = await chatRepo.getGroupMessages(groupId: groupId);
+    result.fold(
+      (failure) => emit(GetChatMessagesFailure(message: failure.message)),
+      (stream) {
+        messagesStreamSubscription = stream.listen(
+          (allMessages) {
+            messages = allMessages;
+            emit(GetChatMessagesSuccess());
+          },
+          onError: (error) =>
+              emit(GetChatMessagesFailure(message: "stream has error")),
+        );
+      },
+    );
+  }
+
   void sendMessage(String otherUserId, Map<String, dynamic> message) async {
     emit(SendChatMessageLoading());
     final result =
         await chatRepo.sendMessage(otherUserId, message, messages.isEmpty);
+    result.fold(
+      (failure) => emit(SendChatMessageFailure(message: failure.message)),
+      (_) => emit(SendChatMessageSuccess()),
+    );
+  }
+
+  void sendGroupMessage(String groupId, Map<String, dynamic> message) async {
+    emit(SendChatMessageLoading());
+    final result = await chatRepo.sendGroupMessage(groupId, message);
     result.fold(
       (failure) => emit(SendChatMessageFailure(message: failure.message)),
       (_) => emit(SendChatMessageSuccess()),

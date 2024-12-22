@@ -6,6 +6,7 @@ import 'package:chat_app/core/helpers/responsive_helpers/size_helper_extensions.
 import 'package:chat_app/core/services/firebase_auth_service.dart';
 import 'package:chat_app/core/themes/styles.dart';
 import 'package:chat_app/features/auth/presentation/views/login_screen.dart';
+import 'package:chat_app/features/groups/presentation/views/create_group_screen.dart';
 import 'package:chat_app/features/profile/presentation/views/profile_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -22,7 +23,7 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     List<Map> popupMenuItems = [
       {'title': 'Profile', 'target': ProfileScreen.routeName},
-      {'title': 'New group', 'target': ""},
+      {'title': 'New group', 'target': CreateGroupScreen.routeName},
       {'title': 'Settings', 'target': ""},
       {'title': 'Logout', 'target': LoginScreen.routeName, 'color': Colors.red},
     ];
