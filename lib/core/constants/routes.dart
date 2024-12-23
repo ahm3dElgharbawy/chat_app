@@ -3,6 +3,7 @@ import 'package:chat_app/features/auth/presentation/views/register_screen.dart';
 import 'package:chat_app/features/calls/presentation/views/calls_screen.dart';
 import 'package:chat_app/features/chats/presentation/views/chats_screen.dart';
 import 'package:chat_app/features/chats/presentation/views/contacts_screen.dart';
+import 'package:chat_app/features/groups/presentation/views/add_members_screen.dart';
 import 'package:chat_app/features/groups/presentation/views/group_details_screen.dart';
 import 'package:chat_app/features/chats/presentation/views/single_chat_screen.dart';
 import 'package:chat_app/features/groups/presentation/views/create_group_screen.dart';
@@ -30,5 +31,6 @@ class AppRoutes {
         ContactsScreen.routeName: (context) => const ContactsScreen(),
         CreateGroupScreen.routeName: (context) => const CreateGroupScreen(),
         GroupDetailsScreen.routeName: (context) => const GroupDetailsScreen(),
+        AddMembersScreen.routeName: (context) => const AddMembersScreen(),
       };
 }

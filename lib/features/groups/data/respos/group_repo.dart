@@ -16,7 +16,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 abstract class GroupRepo {
   Future<Either<Failure, void>> createGroup(
       String groupName, List<String> membersIds);
-  Future<Either<Failure, void>> addMember(String groupId, String userId);
+  Future<Either<Failure, void>> addMembers(String groupId, List<String> membersIds);
   Future<Either<Failure, void>> removeMember(String groupId, String userId);
   Future<Either<Failure, List<AppUser>>> getGroupMembers(List<String> membersIds);
 }
@@ -49,17 +49,17 @@ class GroupRepoImpl extends GroupRepo {
   }
 
   @override
-  Future<Either<Failure, void>> addMember(String groupId, String userId) async {
+  Future<Either<Failure, void>> addMembers(String groupId, List<String> membersIds) async {
     try {
       DocumentReference group = FirebaseFirestore.instance
           .collection(EndPoints.groupsCollection)
           .doc(groupId);
       await group.update({
-        'members': FieldValue.arrayUnion([userId])
+        'members': FieldValue.arrayUnion(membersIds)
       });
       return right(unit);
     } catch (e) {
-      log('Exception in $runtimeType.addMember: ${e.toString()}');
+      log('Exception in $runtimeType.addMembers: ${e.toString()}');
       return left(
         const ServerFailure(
           'something went wrong, please try again later',

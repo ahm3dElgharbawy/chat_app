@@ -28,9 +28,9 @@ class GroupCubit extends Cubit<GroupState> {
     });
   }
 
-  void addMember(String groupId, String memberId) async {
+  void addMember(String groupId, List<String> members) async {
     emit(AddGroupMemberLoading());
-    final result = await groupRepo.addMember(groupId, memberId);
+    final result = await groupRepo.addMembers(groupId, members);
     result.fold(
         (failure) => emit(AddGroupMemberFailure(message: failure.message)),
         (_) {

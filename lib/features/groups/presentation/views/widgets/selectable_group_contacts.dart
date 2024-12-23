@@ -7,11 +7,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SelectableGroupContacts extends StatefulWidget {
-  const SelectableGroupContacts({super.key, required this.membersIds});
+  const SelectableGroupContacts(
+      {super.key, required this.membersIds, this.exclude = const []});
   final List<String> membersIds;
+  final List<String> exclude;
 
   @override
-  State<SelectableGroupContacts> createState() => _SelectableGroupContactsState();
+  State<SelectableGroupContacts> createState() =>
+      _SelectableGroupContactsState();
 }
 
 class _SelectableGroupContactsState extends State<SelectableGroupContacts> {
@@ -22,7 +25,7 @@ class _SelectableGroupContactsState extends State<SelectableGroupContacts> {
         if (state is GetContactsLoading) {
           return const CustomLoadingWidget();
         }
-        final List<AppUser> contacts = context.read<ChatsCubit>().contacts;
+        final List<AppUser> contacts = context.read<ChatsCubit>().contacts.where((item) => !widget.exclude.contains(item.id)).toList();
         return Expanded(
           child: ListView.builder(
             itemCount: contacts.length,
