@@ -10,7 +10,6 @@ class ContactsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     context.read<ChatsCubit>().getContacts();
-    print(AppUser.getFromCache().id);
     return  Scaffold(
       appBar: AppBar(title: const Text("Contacts"),),
       body: const ContactsBody(),

@@ -1,7 +1,3 @@
-import 'package:chat_app/core/common_widgets/circular_container.dart';
-import 'package:chat_app/core/common_widgets/circular_image.dart';
-import 'package:chat_app/core/common_widgets/user_contact_card.dart';
-import 'package:chat_app/core/constants/sizes.dart';
 import 'package:chat_app/core/extensions/navigation.dart';
 
 import 'package:chat_app/features/chats/data/models/sender.dart';

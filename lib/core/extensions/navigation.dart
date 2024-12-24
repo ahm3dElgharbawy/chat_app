@@ -15,8 +15,8 @@ extension CustomNavigation on BuildContext {
     Navigator.of(this).push(MaterialPageRoute(builder: (context) => screen));
   }
 
-  void pushReplacementNamed(String routeName) {
-    Navigator.of(this).pushReplacementNamed(routeName);
+  void pushReplacementNamed(String routeName, [Object? args]) {
+    Navigator.of(this).pushReplacementNamed(routeName, arguments: args);
   }
 
   void pushReplacementAllNamed(String routeName) {

@@ -39,11 +39,16 @@ class MessageBubble extends StatelessWidget {
             children: [
               //? message
               if (message.file != null)
-                Padding(
-                  padding: EdgeInsets.only(bottom: 10.h),
-                  child: Image.asset(
-                    getMediaImagePlaceHolder(message.file!),
-                    height: 100.h,
+                GestureDetector(
+                  onTap: (){
+                    launchURLFunction(message.file!);
+                  },
+                  child: Padding(
+                    padding: EdgeInsets.only(bottom: 10.h),
+                    child: Image.asset(
+                      getMediaImagePlaceHolder(message.file!),
+                      height: 100.h,
+                    ),
                   ),
                 ),
               if (message.message != null)

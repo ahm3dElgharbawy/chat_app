@@ -8,8 +8,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SelectableGroupContacts extends StatefulWidget {
   const SelectableGroupContacts(
-      {super.key, required this.membersIds, this.exclude = const []});
-  final List<String> membersIds;
+      {super.key, required this.selectedMembers, this.exclude = const []});
+  final List<String> selectedMembers;
   final List<String> exclude;
 
   @override
@@ -31,14 +31,14 @@ class _SelectableGroupContactsState extends State<SelectableGroupContacts> {
             itemCount: contacts.length,
             itemBuilder: (context, i) => ListTile(
               onTap: () {
-                if (widget.membersIds.contains(contacts[i].id)) {
-                  widget.membersIds.remove(contacts[i].id);
+                if (widget.selectedMembers.contains(contacts[i].id)) {
+                  widget.selectedMembers.remove(contacts[i].id);
                 } else {
-                  widget.membersIds.add(contacts[i].id);
+                  widget.selectedMembers.add(contacts[i].id);
                 }
                 setState(() {});
               },
-              trailing: widget.membersIds.contains(contacts[i].id)
+              trailing: widget.selectedMembers.contains(contacts[i].id)
                   ? const Icon(Icons.check_circle, color: Colors.green)
                   : null,
               leading: const CustomCircularImage(

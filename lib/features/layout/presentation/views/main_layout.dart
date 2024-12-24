@@ -6,11 +6,10 @@ import 'package:chat_app/core/helpers/helper_functions.dart';
 import 'package:chat_app/core/helpers/responsive_helpers/size_helper_extensions.dart';
 import 'package:chat_app/features/chats/data/models/chat.dart';
 import 'package:chat_app/features/chats/presentation/view_models/chats_cubit/chats_cubit.dart';
-import 'package:chat_app/features/chats/presentation/views/contacts_screen.dart';
 import 'package:chat_app/features/chats/presentation/views/single_chat_screen.dart';
 import 'package:chat_app/features/layout/presentation/views/custom_search_delegate.dart';
+import 'package:chat_app/features/layout/presentation/views/widgets/contacts_button.dart';
 import 'package:chat_app/features/layout/presentation/views/widgets/main_appbar.dart';
-import 'package:chat_app/core/themes/colors.dart';
 import 'package:chat_app/core/themes/styles.dart';
 import 'package:chat_app/features/layout/presentation/view_models/layout_cubit/layout_cubit.dart';
 import 'package:flutter/material.dart';
@@ -62,27 +61,16 @@ class _MainLayoutState extends State<MainLayout> {
                           SingleChatScreen.routeName, chat.chatHeader);
                     },
                   ),
-                  searchList: context.read<ChatsCubit>().chats,
+                  searchList: [
+                    ...context.read<ChatsCubit>().chats,
+                    ...context.read<ChatsCubit>().groupChats
+                  ],
                 ),
               );
             },
           ),
-          floatingActionButton: cubit.currentIndex == 0
-              ? SizedBox(
-                  height: 56.r,
-                  width: 56.r,
-                  child: FloatingActionButton(
-                    onPressed: () {
-                      context.pushNamed(ContactsScreen.routeName);
-                    },
-                    backgroundColor: AppColors.primary,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15.r),
-                    ),
-                    child: Icon(Icons.chat, size: 24.r),
-                  ),
-                )
-              : null,
+          floatingActionButton:
+              cubit.currentIndex == 0 ? const ShowContactsButtons() : null,
           body: PageView(
             controller: cubit.pageController,
             physics: const NeverScrollableScrollPhysics(),

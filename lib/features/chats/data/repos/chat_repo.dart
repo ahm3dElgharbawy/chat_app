@@ -34,13 +34,16 @@ class ChatRepoImpl extends ChatRepo {
   @override
   Future<Either<Failure, Stream<Future<List<ChatModel>>>>> getChats() async {
     try {
-      List<ChatModel> chats = [];
       final chatsCollection = FirebaseFirestore.instance
           .collection(EndPoints.usersCollection)
           .doc(currentUser.id)
           .collection(EndPoints.chatsCollection);
       final chatsStream = chatsCollection.snapshots().map((snapshot) async {
-        chats.clear();
+        log("################");
+        log(snapshot.docs.length.toString());
+        log("################");
+
+        List<ChatModel> chats = [];
         for (var chatDocument in snapshot.docs) {
           // get chat user data
           final userData = await databaseService.getData(
@@ -48,6 +51,7 @@ class ChatRepoImpl extends ChatRepo {
           // get last message in the chat
           final lastMessage =
               await getLastMessage(chatsCollection, chatDocument.id);
+              log(lastMessage.toString());
           chats.add(
             ChatModel(
               id: chatDocument.id,
@@ -91,11 +95,13 @@ class ChatRepoImpl extends ChatRepo {
           // get last message in the chat
           final lastMessage =
               await getLastMessage(chatsCollection, chatDocument.id);
-              log(chatDocument.data()['members'].toString());
+          log(chatDocument.data()['members'].toString());
           chats.add(
             ChatModel(
               id: chatDocument.id,
-              lastMessage:lastMessage.isEmpty ? null : MessageModel.fromJson(lastMessage, currentUser.id),
+              lastMessage: lastMessage.isEmpty
+                  ? null
+                  : MessageModel.fromJson(lastMessage, currentUser.id),
               isLastMessageByMe: lastMessage['sender_id'] == currentUser.id,
               date: lastMessage['created_at']?.toDate() ??
                   chatDocument.data()['created_at'].toDate(),
@@ -172,8 +178,7 @@ class ChatRepoImpl extends ChatRepo {
                 .toList(),
           ),
     );
-  }
-
+  } 
   DocumentReference getMessageReference(String senderId, String receiverId) {
     return FirebaseFirestore.instance
         .collection(EndPoints.usersCollection)

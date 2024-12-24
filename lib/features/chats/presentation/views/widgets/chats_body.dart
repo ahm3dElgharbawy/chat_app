@@ -1,5 +1,4 @@
 import 'dart:developer';
-import 'dart:ffi';
 
 import 'package:chat_app/core/common_widgets/contact_card.dart';
 import 'package:chat_app/core/common_widgets/loading_widget.dart';

@@ -1,17 +1,12 @@
-import 'dart:convert';
 import 'dart:developer';
 
 import 'package:chat_app/core/constants/endpoints.dart';
-import 'package:chat_app/core/constants/strings.dart';
 import 'package:chat_app/core/errors/exceptions.dart';
 import 'package:chat_app/core/errors/failures.dart';
 import 'package:chat_app/core/services/database_service.dart';
-import 'package:chat_app/core/services/firebase_auth_service.dart';
-import 'package:chat_app/core/services/shared_prefs_singleton.dart';
 import 'package:chat_app/features/auth/data/models/app_user.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 abstract class GroupRepo {
   Future<Either<Failure, void>> createGroup(

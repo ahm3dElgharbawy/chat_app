@@ -7,8 +7,8 @@ import 'package:flutter/material.dart';
 
 class CreateGroupBody extends StatefulWidget {
   const CreateGroupBody(
-      {super.key, required this.membersIds, required this.groupNameController});
-  final List<String> membersIds;
+      {super.key, required this.selectedMembers, required this.groupNameController});
+  final List<String> selectedMembers;
   final TextEditingController groupNameController;
   @override
   State<CreateGroupBody> createState() => _CreateGroupBodyState();
@@ -46,7 +46,7 @@ class _CreateGroupBodyState extends State<CreateGroupBody> {
         AppSizes.h20,
         const CustomSectionText(text: "Select group members"),
         AppSizes.h10,
-        SelectableGroupContacts(membersIds: widget.membersIds,)
+        SelectableGroupContacts(selectedMembers: widget.selectedMembers,)
       ],
     );
   }
